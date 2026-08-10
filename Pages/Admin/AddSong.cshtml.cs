@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using MusicPlayer.Models;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
+using TagLib;
 
 namespace MusicPlayer.Pages.Admin
 {
@@ -77,6 +78,7 @@ namespace MusicPlayer.Pages.Admin
             string? fileName = null;
             string? imageFileName = null;
             string? lyricsFileName = null;
+            TimeSpan duration = TimeSpan.Zero;
 
             if (UploadFile != null && UploadFile.Length > 0)
             {
@@ -92,6 +94,7 @@ namespace MusicPlayer.Pages.Admin
                     {
                         UploadFile.CopyTo(stream);
                     }
+                    duration = GetMp3Duration(filePath);
                 }
                 catch (Exception ex)
                 {
@@ -155,7 +158,8 @@ namespace MusicPlayer.Pages.Admin
                 FilePath = fileName != null ? $"/music/{fileName}" : "/music/default.mp3",
                 ImagePath = imageFileName != null ? $"/images/{imageFileName}" : "/images/default.png",
                 LyricsPath = lyricsFileName != null ? $"/lyrics/{lyricsFileName}" : null,
-                CreateDate = DateTime.Now
+                Duration = duration,
+                CreateDate = DateTime.UtcNow
             };
         
 
@@ -174,6 +178,21 @@ namespace MusicPlayer.Pages.Admin
                 return Page();
             }
             
+        }
+
+        private static TimeSpan GetMp3Duration(string filePath)
+        {
+            try
+            {
+                using (var file = TagLib.File.Create(filePath))
+                {
+                    return file.Properties.Duration;
+                }
+            }
+            catch
+            {
+                return TimeSpan.Zero;
+            }
         }
 
         private static bool IsAllowedAudio(IFormFile? file)

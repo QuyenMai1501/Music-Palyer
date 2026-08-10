@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (data.found) {
                 // Hiển thị tên bài hát dưới dạng liên kết (chỉ hiện tên bài hát)
-                searchResults.innerHTML = `<a href="${data.playLink}" style="display:block; padding:10px; text-decoration:none; color:#065fd4;">${data.title || data.Title}</a>`;
+                searchResults.innerHTML = `<a href="${data.playLink}" style="display:block; padding:10px; text-decoration:none; color:#065fd4;">${data.title}</a>`;
             } else {
                 // Hiển thị cảnh báo trước khi chuyển sang trang liên hệ
                 alert(`🚫 Hệ thống chưa có bài hát "${query}". Vui lòng liên hệ Admin.`);

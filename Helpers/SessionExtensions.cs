@@ -5,6 +5,7 @@ namespace MusicPlayer.Helpers
     public static class SessionExtensions{
         private const string LoginFailCountKey = "LoginFailCount";
         private const string LoginFailStartKey = "LoginFailStart";
+        private const string PlayedSongsKey = "PlayedSongIds";
         public const int MaxLoginFails = 5;
         public static readonly TimeSpan LoginLockWindow = TimeSpan.FromMinutes(15);
 
@@ -65,6 +66,29 @@ namespace MusicPlayer.Helpers
         {
             session.Remove(LoginFailCountKey);
             session.Remove(LoginFailStartKey);
+        }
+
+        public static bool HasPlayedSong(this ISession session, int songId)
+        {
+            string? raw = session.GetString(PlayedSongsKey);
+            if (string.IsNullOrEmpty(raw))
+            {
+                return false;
+            }
+            return raw.Split(',', StringSplitOptions.RemoveEmptyEntries).Contains(songId.ToString());
+        }
+
+        public static void MarkSongPlayed(this ISession session, int songId)
+        {
+            string? raw = session.GetString(PlayedSongsKey);
+            var ids = string.IsNullOrEmpty(raw)
+                ? new List<string>()
+                : raw.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
+            if (!ids.Contains(songId.ToString()))
+            {
+                ids.Add(songId.ToString());
+                session.SetString(PlayedSongsKey, string.Join(",", ids));
+            }
         }
 
         private static DateTime? GetDateTime(this ISession session, string key)

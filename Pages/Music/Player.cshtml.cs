@@ -31,7 +31,7 @@ namespace MusicPlayer.Pages.Music
             Song = _context.Songs.FirstOrDefault(s => s.Id == songId);
             if (Song == null)
             {
-                return RedirectToPage("/Music/Index");
+                return RedirectToPage("/Music/Songs");
             }
 
             if (string.IsNullOrEmpty(Song.ImagePath))
@@ -73,9 +73,13 @@ namespace MusicPlayer.Pages.Music
             var userId = HttpContext.Session.GetUserId();
             HasUserLiked = _context.Likes.Any(l => l.SongId == songId && l.UserId == userId);
             LikeCount = GetLikeCount(songId);
-            SongDuration = GetSongDuration(songId);
+            SongDuration = GetSongDuration(Song);
 
-            var allSongIds = _context.Songs.OrderBy(s => s.Id).Select(s => s.Id).ToList();
+            var allSongIds = _context.Songs
+                .Where(s => !s.IsHidden)
+                .OrderBy(s => s.Id)
+                .Select(s => s.Id)
+                .ToList();
             var currentIndex = allSongIds.IndexOf(songId);
             PrevSongId = currentIndex > 0 ? allSongIds[currentIndex - 1] : (int?)null;
             NextSongId = currentIndex < allSongIds.Count - 1 ? allSongIds[currentIndex + 1] : (int?)null;
@@ -91,8 +95,13 @@ namespace MusicPlayer.Pages.Music
                 return NotFound();
             }
 
-            _context.Plays.Add(new Play { SongId = songId, PlayDate = DateTime.UtcNow });
-            _context.SaveChanges();
+            // Chỉ đếm lượt nghe lần đầu trong một phiên để tránh trùng khi autoplay/seek/tải lại
+            if (!HttpContext.Session.HasPlayedSong(songId))
+            {
+                _context.Plays.Add(new Play { SongId = songId, PlayDate = DateTime.UtcNow });
+                _context.SaveChanges();
+                HttpContext.Session.MarkSongPlayed(songId);
+            }
 
             Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
             Response.Headers["Pragma"] = "no-cache";
@@ -146,12 +155,11 @@ namespace MusicPlayer.Pages.Music
             return _context.Likes.Count(l => l.SongId == songId);
         }
 
-        private string GetSongDuration(int songId)
+        private string GetSongDuration(Song song)
         {
-            var song = _context.Songs.Find(songId);
-            if (song == null)
+            if (song.Duration > TimeSpan.Zero)
             {
-                return "00:00";
+                return $"{song.Duration.Minutes:D2}:{song.Duration.Seconds:D2}";
             }
 
             var filePath = Path.Combine(_environment.WebRootPath, song.FilePath.TrimStart('/', '\\'));
@@ -164,8 +172,9 @@ namespace MusicPlayer.Pages.Music
             {
                 using (var file = TagLib.File.Create(filePath))
                 {
-                    var duration = file.Properties.Duration;
-                    return $"{duration.Minutes:D2}:{duration.Seconds:D2}";
+                    song.Duration = file.Properties.Duration;
+                    _context.SaveChanges();
+                    return $"{song.Duration.Minutes:D2}:{song.Duration.Seconds:D2}";
                 }
             }
             catch

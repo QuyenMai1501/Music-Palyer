@@ -28,4 +28,4 @@ ASP.NET Core 8.0 Razor Pages app (Vietnamese UI) + one MVC API controller. EF Co
 
 - All user-facing strings, validation messages, and code comments are Vietnamese - keep new ones in Vietnamese.
 - Page models use primary-constructor DI, e.g. `class X(AppDbContext context) : PageModel`.
-- JSON API responses (e.g. `/api/Search/{query}`) keep PascalCase keys because `PropertyNamingPolicy = null` (`Program.cs:25-28`).
+- JSON API responses are camelCase because `JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase` (`Program.cs:26-29`). E.g. `/api/Search/{query}` returns `title`, `artist`, `filePath`, `found`, `playLink`.

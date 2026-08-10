@@ -48,7 +48,7 @@ namespace MusicPlayer.Pages.Account
                 Email = Email,
                 PasswordHash = passwordService.HashPassword(Password),
                 Role = "User",
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.UtcNow
             };
             _db.Users.Add(newUser);
             _db.SaveChanges();

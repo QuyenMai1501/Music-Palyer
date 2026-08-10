@@ -43,7 +43,7 @@ namespace MusicPlayer.Pages.Account
             }
 
             var user = _context.Users.FirstOrDefault(u =>
-                u.ResetToken == Token && u.ResetTokenExpiry != null && u.ResetTokenExpiry > DateTime.Now);
+                u.ResetToken == Token && u.ResetTokenExpiry != null && u.ResetTokenExpiry > DateTime.UtcNow);
             if (user == null)
             {
                 ModelState.AddModelError("", "Token không hợp lệ hoặc đã hết hạn.");
