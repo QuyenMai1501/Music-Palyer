@@ -1,0 +1,92 @@
+@page
+@{
+    Layout= "_Layout";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Một sao Việt tổ chức liveshow ở chùa - MUSIC PLAYER</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            min-height: calc(100vh - 80px);
+        }
+        .navbar-brand img {
+            max-width: 200px;
+            width: 100%;
+        }
+        .article-img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            aspect-ratio: 5/3;
+            border-radius: 8px;
+        }
+        .gallery-img {
+            width: 300%;
+            max-width: 1000px;
+            height: 400px;
+            object-fit: cover;
+            aspect-ratio: 5/3;
+            margin-bottom: 45px;
+            border-radius: 8px;
+        }
+        .card-body {
+            font-size: 1.8rem;
+            line-height: 1.6;
+        }
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        strong {
+        display: block; 
+        text-align: center;
+        }
+        .centered-bold p 
+        {
+        text-align: center;
+        }
+        .footer {
+            display: none;
+        }
+        h1 {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Một sao Việt tổ chức liveshow ở chùa, thu hút tới 17.000 khán giả tham gia</h1>
+        <img src="https://th.bing.com/th/id/OIP.JytTebnDbVk3vZ6Il8ZhcgHaEl?w=283&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" class="article-img mb-3" alt="Một sao Việt tổ chức liveshow ở chùa, thu hút tới 17.000 khán giả tham gia">
+        <div class="card card-body">
+            <p class="centered-bold"><strong>Theo chia sẻ của Trần Vũ, liveshow được lấy tên là “Tình ca tháng 7”, diễn ra tại Thiền Tôn Phật Quang, thuộc địa bàn Núi Dinh, Tân Hòa, Bà Rịa – Vũng Tàu.</strong></p>
+            <p>Trở về từ gameshow “Hãy nghe tôi hát 2018”, Á quân Trần Vũ nhanh chóng bắt tay vào thực hiện các dự án âm nhạc. Mới đây, anh vừa gây sốc khi tổ chức thành công liveshow tại chùa. Đáng nói show diễn này thu hút tới 17.000 người tham gia.</p>
+            <div class="gallery-container">
+                <img src="http://www.blogamnhac.com/wp-content/uploads/2018/12/sao-viet-to-chuc-liv-b88c.jpg" class="gallery-img" alt="Hình ảnh liveshow Tình ca tháng 7">
+            </div>
+            <p>Trong đó, tất cả các tiết mục đều được ban nhạc và nhóm bè chơi live 100%. Á quân “Hãy nghe tôi hát” chia sẻ thêm, để có được sự ăn ý hoàn hảo với ban nhạc và nhóm bè, anh đã phải cật lực tập luyện trong gần 3 tháng. Không chỉ thế, tự anh đã phối lại tất cả các ca khúc với sự giúp sức của một nữ đồng nghiệp.</p>
+            <div class="gallery-container">
+                <img src="http://www.blogamnhac.com/wp-content/uploads/2018/12/sao-viet-to-chuc-liv-9195.jpg" class="gallery-img" alt="Hình ảnh liveshow Tình ca tháng 7">
+            </div>
+            <p>Trước câu hỏi vì sao lại tổ chức liveshow tại chùa, Trần Vũ bộc bạch: “Tôi đã ấp ủ một liveshow về mẹ từ rất lâu, vì không có mẹ, không có một Trần Vũ như ngày hôm nay. Khi chia sẻ ý tưởng liveshow về mẹ, tôi được đạo diễn Huỳnh Phúc Thanh Nhân khuyến khích nên mạnh dạn tổ chức ở chùa vào dịp lễ Vu Lan. Và Thiền Tôn Phật Quang đã tạo điều kiện để tôi có được một liveshow đầu tiên có một không hai rất đáng nhớ”.</p>
+            <div class="gallery-container">
+                <img src="http://www.blogamnhac.com/wp-content/uploads/2018/12/1535442561-315-batch-3ccb.jpg" class="gallery-img" alt="Hình ảnh liveshow Tình ca tháng 7">
+            </div>
+            <p>Còn về nghi án cố tình gây sốc, nam ca sĩ cũng nhấn mạnh: “Tôi nghĩ không chỉ riêng mình tôi, mà tất cả mọi người chẳng ai lại dám mang tình mẹ ra đùa giỡn”. Đây cũng là dấu ấn quan trọng trong sự nghiệp ca hát của anh và là cơ hội để anh có thể tri ân những khán giả đã yêu mến, ủng hộ anh trong suốt thời gian qua.</p>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            © 2025 - MusicPlayer - <a asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

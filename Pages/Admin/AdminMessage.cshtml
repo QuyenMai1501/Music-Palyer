@@ -1,0 +1,63 @@
+@page
+@model MusicPlayer.Pages.Admin.AdminMessageModel
+@{
+    ViewData["Title"] = "Quản lý phản hồi";
+}
+
+<h2 style="color: white;">Phản hồi từ người dùng</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Nội dung</th>
+            <th>Phản hồi của Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model.Messages)
+        {
+            <tr>
+                <td>@message.UserName</td>
+                <td>@message.UserEmail</td>
+                <td>@message.Content</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(message.AdminReply))
+                    {
+                        <p>@message.AdminReply</p>
+                        <small class="text-muted">(@message.AdminReplyAt?.ToString("dd/MM/yyyy HH:mm"))</small>
+                    }
+                    else
+                    {
+                        <form method="post" asp-antiforgery="true">
+                            <input type="hidden" name="messageId" value="@message.Id" />
+                            <textarea name="AdminReply_@message.Id" class="form-control">
+                                @(Request.HasFormContentType ? Request.Form["AdminReply_" + message.Id] : "")
+                            </textarea>
+                            <span class="text-danger">@Html.ValidationMessage("AdminReply")</span>
+                            <button type="submit" class="btn btn-primary mt-2">Trả lời</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center mt-4">
+    @if(Model.PageIndex > 1)
+    {
+        <a href="?PageIndex=@(Model.PageIndex - 1)" class="btn btn-primary">Trước</a>
+    }
+    @if(Model.PageIndex < Model.TotalPages)
+    {
+        <a href="?PageIndex=@(Model.PageIndex + 1)" class="btn btn-primary">Sau</a>
+    }
+    <p class="mt-2" style="color: #fff;">Trang @Model.PageIndex/ @Model.TotalPages</p>
+</div>

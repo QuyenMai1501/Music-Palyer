@@ -1,0 +1,342 @@
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\appsettings.Development.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\appsettings.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.runtime.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.endpoints.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.exe
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.deps.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.runtimeconfig.json
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MusicPlayer.pdb
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfoInputs.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfo.cs
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.csproj.CoreCompileInputs.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.MvcApplicationPartsAssemblyInfo.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cs
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\scopedcss\bundle\MusicPlayer.styles.css
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\scopedcss\projectbundle\MusicPlayer.bundle.scp.css
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets.build.json
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets.development.json
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssets.props
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets\msbuild.build.MusicPlayer.props
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MusicPlayer.props
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MusicPlayer.props
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\staticwebassets.pack.json
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\refint\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.pdb
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.genruntimeconfig.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\ref\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Humanizer.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\MySqlConnector.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.CodeDom.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.Composition.Convention.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.Composition.Hosting.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.Composition.Runtime.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\System.Composition.TypedParts.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPlayer.csproj.AssemblyReference.cache
+D:\dev\K24PF06_2\Launch\musicplayer\obj\Debug\net8.0\MusicPla.163160C2.Up2Date
+D:\dev\K24PF06_2\Launch\MusicPlayer\bin\Debug\net8.0\TagLibSharp.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\appsettings.Development.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\appsettings.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.runtime.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.endpoints.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.exe
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.deps.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.runtimeconfig.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.pdb
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Humanizer.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\MySqlConnector.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.CodeDom.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\TagLibSharp.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.csproj.AssemblyReference.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfoInputs.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfo.cs
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.csproj.CoreCompileInputs.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.MvcApplicationPartsAssemblyInfo.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cs
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\bundle\MusicPlayer.styles.css
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\projectbundle\MusicPlayer.bundle.scp.css
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.build.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.development.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssets.props
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.build.MusicPlayer.props
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MusicPlayer.props
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MusicPlayer.props
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.pack.json
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPla.163160C2.Up2Date
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\refint\MusicPlayer.dll
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.pdb
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.genruntimeconfig.cache
+C:\dev\k24-pf06\DA-1\Date 4-6-2025\Launch (2)\MusicPlayer\obj\Debug\net8.0\ref\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\appsettings.Development.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\appsettings.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.runtime.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.staticwebassets.endpoints.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.exe
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Humanizer.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MySqlConnector.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.CodeDom.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Convention.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Hosting.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.Runtime.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\System.Composition.TypedParts.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\TagLibSharp.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.csproj.AssemblyReference.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfoInputs.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.AssemblyInfo.cs
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.csproj.CoreCompileInputs.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.MvcApplicationPartsAssemblyInfo.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.RazorAssemblyInfo.cs
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\bundle\MusicPlayer.styles.css
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\scopedcss\projectbundle\MusicPlayer.bundle.scp.css
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.build.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.development.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssets.props
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.MusicPlayer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.build.MusicPlayer.props
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.MusicPlayer.props
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.MusicPlayer.props
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\staticwebassets.pack.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPla.163160C2.Up2Date
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\refint\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.pdb
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.deps.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.runtimeconfig.json
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.dll
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\bin\Debug\net8.0\MusicPlayer.pdb
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\MusicPlayer.genruntimeconfig.cache
+D:\dev\K24PF06_2\Launch (2)\MusicPlayer\obj\Debug\net8.0\ref\MusicPlayer.dll

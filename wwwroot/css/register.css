@@ -1,0 +1,185 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Thiết lập nền và căn giữa form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('/images/background/anh10.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Container chính của form */
+.wrapper {
+    position: relative;
+    width: 420px;
+    background-color: #fff;
+    border: 2px solid rgba(255, 255, 255, .1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    color: black;
+    border-radius: 10px;
+    padding: 30px 40px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+}
+
+/* Tiêu đề form */
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Container cho mỗi input */
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 20px 0;
+}
+
+/* Style cho input và select */
+.input-box input,
+.input-box select {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 40px;
+    font-size: 16px;
+    color: black;
+    padding: 20px 50px 20px 20px;
+    outline: none;
+}
+
+/* Viền đỏ khi input/select không hợp lệ */
+.input-box input.invalid,
+.input-box select.invalid {
+    border: 2px solid #ff0000 !important;
+}
+
+/* Placeholder cho input */
+.input-box input::placeholder {
+    color: black;
+    text-align: left;
+}
+
+/* Icon bên phải input */
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    z-index: 10;
+}
+
+/* Placeholder cho vai trò */
+.input-box #rolePlaceholder {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ẩn select thực tế */
+.input-box #roleSelect {
+    display: none;
+}
+
+/* Danh sách vai trò */
+.input-box .role-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    padding: 5px 0;
+    margin: 2px 0 0 0;
+    list-style: none;
+    z-index: 10;
+}
+
+/* Item trong danh sách vai trò */
+.input-box .role-list li {
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover cho item vai trò */
+.input-box .role-list li:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+/* Nút đăng ký */
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background-color: #17bbec;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Link đăng nhập */
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+/* Nút quay lại */
+.back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 32px;
+    color: #90caf9;
+}
+
+.back-arrow:hover {
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+}
+
+/* Thông báo lỗi */
+.error-message {
+    color: #ff0000;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 20px;
+    text-shadow: none;
+    display: block;
+    min-height: 20px;
+}

@@ -1,0 +1,16 @@
+@page
+@model MusicPlayer.Pages.Playlists.CreateModel
+@{
+    Layout = "_Layout";
+}
+
+<h2 style="color: #fff;">➕ Tạo Playlist mới</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Playlist.Name">Tên Playlist</label>
+        <input asp-for="Playlist.Name" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Tạo Playlist</button>
+</form>

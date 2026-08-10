@@ -1,0 +1,73 @@
+@page
+@model MusicPlayer.Pages.Admin.ManageModel
+@{
+    ViewData["Title"] = "Quản lý người dùng";
+}
+
+<h2 style="color: white;">Quản lý Người dùng</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Vai trò</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>@(user.IsLocked ? "Bị khóa" : "Hoạt động")</td>
+                <td>
+                    <form method="post" asp-page-handler="PromoteToAdmin" style="display:inline">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn btn-primary" @(user.Role == "Admin" ? "disabled" : "")>
+                            Nâng quyền
+                        </button>
+                    </form>
+
+                    <form method="post" asp-page-handler="LockUser" style="display:inline; margin-left:5px;">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn btn-warning" @(user.IsLocked ? "disabled" : "")>
+                            Khóa tài khoản
+                        </button>
+                    </form>
+
+                    <form method="post" asp-page-handler="UnlockUser" style="display:inline; margin-left:5px;">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn btn-success" @(!user.IsLocked ? "disabled" : "")>
+                            Mở tài khoản
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center mt-4">
+    @if(Model.PageIndex > 1)
+    {
+        <a href="?PageIndex=@(Model.PageIndex - 1)" class="btn btn-primary">Trước</a>
+    }
+    @if(Model.PageIndex < Model.TotalPages)
+    {
+        <a href="?PageIndex=@(Model.PageIndex + 1)" class="btn btn-primary">Sau</a>
+    }
+    <p class="mt-2" style="color: #fff;">Trang @Model.PageIndex/ @Model.TotalPages</p>
+</div>

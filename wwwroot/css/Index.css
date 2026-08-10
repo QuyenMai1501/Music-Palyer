@@ -1,0 +1,25 @@
+p {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+@keyframes colorFade {
+    0% { color: #A8DADC; }
+    50% { color: #F4A261; }
+    100% { color: #A8DADC; }
+}
+
+.featured h2 {
+    font-size: 32px;
+    font-weight: bold;
+    animation: colorFade 5s infinite alternate ease-in-out;
+}
+
+.featured p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+}

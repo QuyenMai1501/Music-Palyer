@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+.playlist-container,
+.playlist-container td {
+    font-family: 'Roboto', 'Noto Sans', Arial, sans-serif !important;
+    unicode-bidi: embed;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: url('/images/background/anh10.jpg') no-repeat center center / cover;
+    padding-top: 0;
+}
+
+.music-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 80px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+.playlist-container {
+    width: 100%;
+    max-width: 700px; /* SỬA: Tăng max-width lên 700px */
+    background: #00000047;
+    border-radius: 20px;
+    box-shadow: 0 40px 90px rgba(255, 147, 51, 0.5);
+    padding: 30px;
+    color: aliceblue;
+    /* overflow-y: auto;
+    max-height: 550px; */
+    margin: auto;
+}
+
+.playlist-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.playlist-container th,
+.playlist-container td {
+    padding: 10px;
+    text-align: left;
+    text-transform: capitalize;
+    background: transparent;
+}
+
+.playlist-container th {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.playlist-container td {
+    font-size: 14px;
+}
+
+.playlist-container tr {
+    cursor: pointer;
+    background: transparent;
+}
+
+.playlist-container tr:hover {
+    background: rgba(255, 147, 51, 0.2);
+}
+
+.playlist-container .active-song {
+    background: rgba(255, 147, 51, 0.3);
+    font-weight: bold;
+}
+
+.playlist-header {
+    display: flex;
+    flex-direction: column; /* SỬA: Column để header-controls ở trên header-main */
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* SỬA: Giữ h3 và controls cùng hàng */
+    width: 100%;
+}
+
+.playlist-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start; /* SỬA: Căn trái để mũi tên trước, volume sau */
+    width: 100%;
+    margin-bottom: 10px; /* SỬA: Khoảng cách với header-main */
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* SỬA: Tăng gap từ 15px lên 20px để cách xa hơn */
+    align-items: center;
+}
+
+.control-btn {
+    background: rgba(255, 147, 51, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.control-btn:hover {
+    background: rgba(255, 147, 51, 0.7);
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.volume-control .volume-icon {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.volume-control input[type="range"] {
+    width: 80px;
+    height: 5px;
+    background: coral;
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+    display: none; /* SỬA: Ẩn thanh âm lượng */
+}
+
+.volume-control:hover input[type="range"] {
+    display: block; /* SỬA: Hiển thị khi hover */
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-control input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.playlist-header .dropdown .btn-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0;
+    background: rgba(255, 147, 51, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playlist-header .dropdown .btn-link:hover {
+    background: rgba(255, 147, 51, 1.0);
+}
+
+.playlist-header .dropdown .dropdown-menu {
+    background: rgba(255, 147, 51, 0.6);
+    border: none;
+    z-index: 9999;
+}
+
+.playlist-header .dropdown .dropdown-item {
+    color: #fff;
+}
+
+.playlist-header .dropdown .dropdown-item:hover {
+    background: rgba(255, 147, 51, 0.8);
+}
+
+.visualizer {
+    width: 100%;
+    height: 100px;
+    display: block;
+    margin-top: 20px;
+}
+
+.playlist-scroll {
+    max-height: 220px; /* hoặc bất kỳ chiều cao nào bạn muốn cố định */
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.table, .table th, .table td {
+    color: white;
+}

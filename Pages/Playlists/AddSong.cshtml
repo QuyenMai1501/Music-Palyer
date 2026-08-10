@@ -1,0 +1,61 @@
+@page "{playlistId:int}"
+@model MusicPlayer.Pages.Playlists.AddSongModel
+@{
+    Layout = "_Layout";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<h2 style="color: white;">Thêm bài hát vào Playlist: @Model.Playlist.Name</h2>
+
+<form method="post">
+    <input type="hidden" name="playlistId" value="@Model.Playlist.Id" />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Chọn</th>
+                <th>Tên bài hát</th>
+                <th>Ca sĩ</th>
+                <th>Nghe thử</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var song in Model.AvailableSongs)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="SelectedSongIds" value="@song.Id" />
+                    </td>
+                    <td>@song.Title</td>
+                    <td>@song.Artist</td>
+                    <td>
+                        <audio controls>
+                            <source src="@song.FilePath" type="audio/mpeg">
+                        </audio>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-between align-items-center mt-3"></div>
+        <button type="submit" class="btn btn-primary">Thêm vào playlist</button>
+
+        <div class="pagination-controls mt-2">
+            @if(Model.PageIndex > 1)
+            {
+                <a href="?PageIndex=@(Model.PageIndex - 1)" class="btn btn-primary">Trước</a>
+            }
+            @if(Model.PageIndex < Model.TotalPages)
+            {
+                <a href="?PageIndex=@(Model.PageIndex + 1)" class="btn btn-primary">Sau</a>
+            }
+            <p class="mt-2" style="color: #fff;">Trang @Model.PageIndex / @Model.TotalPages</p>
+        </div>
+    </div>
+</form>

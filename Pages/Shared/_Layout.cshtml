@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor IHttpContextAccessor
+@{
+    var username = IHttpContextAccessor.HttpContext?.Session.GetString("Username");
+    var userRole = IHttpContextAccessor.HttpContext?.Session.GetString("UserRole");
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MusicPlayer</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap 5.3.6 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" 
+          crossorigin="anonymous">
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap Icons 1.13.1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS tùy chỉnh -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MusicPlayer.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <style>
+        /* SỬA: Cấu hình body và main để hỗ trợ fixed footer */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Đảm bảo body cao tối thiểu bằng viewport */
+        }
+        main {
+            flex: 1 0 auto; /* Nội dung chính mở rộng */
+            padding-bottom: 60px; /* SỬA: Thêm padding-bottom để tránh footer che nội dung */
+        }
+        /* Dropdown menu style */
+        .navbar-nav .dropdown-menu {
+            position: absolute;
+            min-width: 150px;
+            z-index: 1000;
+            margin-top: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            overflow: visible;
+        }
+        .dropdown-menu {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-gradient sticky-top">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <!-- Khối trái: Logo và menu -->
+                <div class="d-flex align-items-center">
+                    <a asp-page="/Index">
+                        <img src="~/images/logo.png" alt="Logo" width="55" />
+                    </a>
+                    <ul class="navbar-nav d-none d-lg-flex flex-row ms-2">
+                        <li class="nav-item me-1">
+                            <a class="nav-link" href="/Music/Songs">Âm Nhạc</a>
+                        </li>
+                        <li class="nav-item me-1">
+                            <a class="nav-link" href="/Playlists/Index">Danh Sách Phát</a>
+                        </li>
+                        <li class="nav-item me-1">
+                            <a class="nav-link" href="/Contact">Liên Hệ</a>
+                        </li>
+                        <li class="nav-item me-1">
+                            <a class="nav-link" href="/Blog/News">Tin Tức</a>
+                        </li>
+                        @if(userRole == "Admin")
+                        {
+                            <li class="nav-item me-1 dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Quản Lý
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" href="/Admin/ManageSongs">Quản Lý Bài Hát</a></li>
+                                    <li><a class="dropdown-item" href="/Admin/ManageUser">Quản Lý Người Dùng</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" href="/Admin/AdminMessage">Hộp thư</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!-- Khối giữa: Thanh tìm kiếm -->
+                <div class="d-none d-lg-flex mx-auto" style="flex: 1;">
+                    <div class="navbar-search-container w-100">
+                        <input type="text" id="navbarSearchInput" placeholder="Tìm kiếm" autocomplete="off" />
+                        <button id="navbarSearchButton" class="green-search-btn">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Khối phải: Thông tin người dùng -->
+                <div class="d-flex align-items-center">
+                    @if(!string.IsNullOrEmpty(username))
+                    {
+                        <div class="me-2">
+                            <span><strong style="font-size: large;">@username</strong></span>
+                        </div>
+                        <a asp-page="/Account/Logout" class="btn btn-login me-2">Đăng Xuất</a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Account/Login" class="btn btn-login me-2">Đăng Nhập</a>
+                        <a asp-page="/Account/Register" class="btn btn-login me-2">Đăng Ký</a>
+                    }
+                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Music/Songs">Âm Nhạc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Playlists/Index">Danh Sách Phát</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact">Liên Hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Blog/News">Tin Tức</a>
+                    </li>
+                    @if(userRole == "Admin")
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Quản Lý
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdownMobile">
+                                <li><a class="dropdown-item" href="/Admin/ManageSongs">Quản Lý Bài Hát</a></li>
+                                <li><a class="dropdown-item" href="/Admin/ManageUser">Quản Lý Người Dùng</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- SỬA: Main với padding-bottom để tránh footer fixed che nội dung -->
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+    <!-- SỬA: Footer cố định ở dưới cùng viewport -->
+    @* <footer class="border-top footer text-muted">
+        <div class="container">
+            © 2025 - MusicPlayer - <a asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer> *@
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/search.js" asp-append-version="true"></script>
+    <script>
+        // Khi resize cửa sổ, ẩn collapse nếu cần (cho màn hình lớn)
+        window.addEventListener('resize', function() {
+            const smallMenus = document.querySelectorAll('.collapse');
+            if (window.innerWidth >= 992) {
+                smallMenus.forEach(function(menu) {
+                    menu.classList.remove('show');
+                });
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

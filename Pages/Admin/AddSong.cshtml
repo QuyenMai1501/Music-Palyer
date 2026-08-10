@@ -1,0 +1,85 @@
+@page
+@using MusicPlayer.Helpers
+@model MusicPlayer.Pages.Admin.AddSongModel
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    label {
+        color: #fff;
+    }
+    .container {
+        flex-grow: 1;
+        margin-top: 80px;
+        padding: 20px;
+        
+    }
+    .min-vh-100 {
+        min-height: calc(100vh - 100px); /* Trừ chiều cao navbar (~56px) và footer (~60px) */
+    }
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000
+    }
+    .error {
+        margin-top: 20px;
+    }
+    .error-message{
+        color: red;
+    }
+</style>
+
+@if (ViewData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center mb-3">
+        @ViewData["SuccessMessage"]
+    </div>
+}
+
+<div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <h2 class="mb-4" style="color: white;">🎵 Thêm bài hát mới</h2>
+
+    @if (HttpContext.Session.GetUserRole() == "Admin")
+    {
+        <form method="post" enctype="multipart/form-data" class="w-100" style="max-width: 500px; margin-bottom: 50px;">
+            <div class="mb-3">
+                <label for="title" class="form-label fw-bold">Tiêu đề bài hát:</label>
+                <input type="text" id="title" asp-for="Title" class="form-control" >
+                <span class="error-message" asp-validation-for="Title"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label for="artist" class="form-label fw-bold">Nghệ sĩ:</label>
+                <input type="text" id="artist" asp-for="Artist" class="form-control" >
+                <span class="error-message" asp-validation-for="Artist"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="uploadImage" class="form-label fw-bold">Tải lên ảnh bìa:</label>
+                <input type="file" id="uploadImage" asp-for="UploadImage" class="form-control" accept=".jpg,.jpeg,.png,.webp" >
+            </div>
+            
+            <div class="mb-3">
+                <label for="filePath" class="form-label fw-bold">Tải lên file nhạc:</label>
+                <input type="file" id="uploadFile" asp-for="UploadFile" class="form-control" accept=".mp3" >
+                <span class="error-message" asp-validation-for="UploadFile"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="uploadLyrics" class="form-label fw-bold">Tải lên lời bài hát (tùy chọn):</label>
+                <input type="file" id="uploadLyrics" asp-for="UploadLyrics" class="form-control" accept=".lrc">
+            </div>
+            
+            <button type="submit" class="btn btn-success w-100">Thêm bài hát</button>
+        </form>
+    }
+    else
+    {
+        <p class="error text-danger text-center fw-bold mt-3">❌ Bạn không có quyền thêm bài hát.</p>
+    }
+</div>
+

@@ -1,0 +1,198 @@
+@page
+@model MusicPlayer.Pages.Music.SongsModel
+@{
+    Layout = "_Layout";
+}
+
+<!-- SỬA: Căn giữa nội dung -->
+<div class="container d-flex flex-column align-items-center">
+    <!-- SỬA: Hiển thị alert với thông báo thành công -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- SỬA: Giữ lưới bài hát mới -->
+    <h2 class="mt-5">🎵 Bài Hát Hiện Có</h2>
+    <div class="song-grid">
+        @foreach (var song in Model.Songs)
+        {
+            <figure class="song-card">
+                <a href="/Music/Player?songId=@song.Id">
+                    <img src="@(song.ImagePath ?? "/images/default.jpg")" alt="@song.Title">
+                </a>
+                <figcaption>@song.Title - @song.Artist</figcaption>
+            </figure>
+        }
+    </div>
+</div>
+
+<nav>
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="?page=@i">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<style>
+    .mt-5 {
+        color: white;
+    }
+    /* SỬA: Style cho lưới bài hát */
+    .song-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        padding: 20px;
+        color: white;
+    }
+    .song-grid .song-card {
+        flex: 0 0 150px;
+        max-width: 150px;
+        text-align: center;
+    }
+    .song-grid .song-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px rgb(0, 0, 0);
+        padding: 10px;
+        object-fit: cover;
+    }
+    .song-grid .song-card figcaption {
+        margin-top: 8px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    /* SỬA: Style cho carousel và song-card */
+    @* body {
+        margin: 0;
+        padding-top: 80px;
+        height: 100%;
+        overflow-y: auto;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: rgba(0,0,0,0.5);
+    } *@
+    h2 {
+        margin-bottom: 20px;
+    }
+    .song-container {
+        width: 100%;
+        position: relative;
+        overflow-x: auto;
+        padding-bottom: 20px;
+    }
+    .song-list {
+        display: flex;
+        flex-wrap: nowrap;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        padding: 10px;
+        gap: 40px;
+        overflow-x: hidden;
+    }
+    .song-container::-webkit-scrollbar {
+        display: none;
+    }
+    .song-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .song-card {
+        flex: 0 0 150px;
+        text-align: center;
+        scroll-snap-align: start;
+    }
+    .song-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+    .song-card figcaption {
+        margin-top: 8px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+        z-index: 10;
+    }
+    .nav-button.prev {
+        left: 10px;
+    }
+    .nav-button.next {
+        right: 10px;
+    }
+    .nav-button:hover {
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .nav-button:disabled {
+        background: rgba(0, 0, 0, 0.3);
+        cursor: not-allowed;
+    }
+</style>
+
+<!-- SỬA: Cập nhật JavaScript để tự động ẩn alert sau 5 giây -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // JavaScript cho carousel
+        const songList = document.querySelector('.song-list');
+        const prevButton = document.querySelector('.nav-button.prev');
+        const nextButton = document.querySelector('.nav-button.next');
+        const songWidth = 190; // Chiều rộng mỗi bài hát (150px + gap 40px)
+
+        function updateButtons() {
+            prevButton.disabled = songList.scrollLeft <= 0;
+            nextButton.disabled = songList.scrollLeft >= songList.scrollWidth - songList.clientWidth - 1;
+        }
+
+        prevButton.addEventListener('click', function () {
+            songList.scrollLeft -= songWidth;
+            updateButtons();
+        });
+
+        nextButton.addEventListener('click', function () {
+            songList.scrollLeft += songWidth;
+            updateButtons();
+        });
+
+        songList.addEventListener('scroll', updateButtons);
+        updateButtons();
+
+        // SỬA: Tự động ẩn alert sau 5 giây
+        const alert = document.querySelector('.alert.alert-success');
+        if (alert) {
+            setTimeout(() => {
+                // Sử dụng bootstrap.Alert để đóng với hiệu ứng
+                const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                bsAlert.close();
+            }, 2000); // 5000ms = 5 giây
+        }
+    });
+</script>

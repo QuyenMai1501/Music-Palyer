@@ -1,0 +1,171 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MusicPlayer
+build_property.RootNamespace = MusicPlayer
+build_property.ProjectDir = D:\devs\Project\Music\K24PF06_2\Launch (2)\MusicPlayer\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\devs\Project\Music\K24PF06_2\Launch (2)\MusicPlayer
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Admin/AddSong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRkU29uZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Admin/AdminMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW5NZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Admin/EditSong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdFNvbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Admin/ManageSongs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlU29uZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Admin/ManageUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlMy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlNC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article5.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlNS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article6.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlNi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article7.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlNy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article8.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlOC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/article9.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xhcnRpY2xlOS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Blog/News.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxvZ1xOZXdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Music/Player.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNcUGxheWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Music/Songs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNcU29uZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/AddSong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXEFkZFNvbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Playlists/MusicPlayer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxheWxpc3RzXE11c2ljUGxheWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/devs/Project/Music/K24PF06_2/Launch (2)/MusicPlayer/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hvnjqvzde6

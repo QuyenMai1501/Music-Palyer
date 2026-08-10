@@ -1,0 +1,73 @@
+@page
+@model MusicPlayer.Pages.Account.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div id="notificationBox" class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        
+        <form method="post" id="loginForm">
+            <!-- Nút quay lại trang chính -->
+
+            <a asp-page="/Index" class="back-arrow">
+                <i class="bx bx-arrow-back"></i>
+            </a>
+
+            <h1>Đăng nhập</h1>
+            <!-- Input cho tên người dùng -->
+            <div class="input-box">
+                <input asp-for="Username" type="text" placeholder="Tên người dùng">
+                <i class='bx bxs-user'></i>
+                <span class="error-message" asp-validation-for="Username" style="font-weight: 700;"></span>
+            </div>
+            <!-- Input cho mật khẩu -->
+            <div class="input-box">
+                <input asp-for="Password" type="password" placeholder="Mật khẩu" >
+                <i class='bx bxs-lock-alt'></i>
+                <span class="error-message" asp-validation-for="Password" style="font-weight: 700;"></span>
+            </div>
+            <!-- Hiển thị lỗi chung (dưới input mật khẩu, căn giữa) -->
+            @if (!ModelState.IsValid && ModelState.ContainsKey("") && ModelState[""].Errors.Any())
+            {
+                <div class="error-message-general">
+                    @foreach (var error in ModelState[""].Errors)
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+            <!-- Remember me và Forget password -->
+            <div class="remember-forgot">
+                <a href="/Account/ForgotPassword">Quên mật khẩu?</a>
+            </div>
+            <!-- Nút đăng nhập -->
+            <button type="submit" class="btn">Đăng nhập</button>
+            <div class="register-link">
+                <p>Không có tài khoản? <a asp-page="/Account/Register">Đăng ký</a></p>
+            </div>
+        </form>
+        
+    </div>
+
+    <!-- Thêm thư viện jQuery và jQuery Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

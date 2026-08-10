@@ -1,0 +1,373 @@
+/* Style cho body để đảm bảo nền phủ toàn màn hình */
+body.music-player-page {
+    margin: 0;
+    padding: 0;
+    background: url('/images/background/anh10.jpg') no-repeat center center / cover fixed;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Reset style cho các phần tử trong player-wrapper */
+.player-wrapper * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* Căn giữa player-wrapper và đảm bảo không bị che bởi navbar cố định */
+.player-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: center;
+    min-height: calc(100vh - 60px - 40px);
+    padding: 20px;
+    padding-top: 80px;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+/* Khung trình phát nhạc */
+.music-container {
+    margin-top: 20px;
+    width: 350px;
+    height: 550px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 40px 90px rgba(255, 147, 51, 0.5);
+    padding: 30px;
+    padding-top: 50px;
+    overflow: hidden;
+    color: aliceblue;
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: relative;
+}
+
+/* Thanh điều chỉnh âm lượng */
+.volume-control {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    z-index: 15;
+}
+
+/* Icon âm lượng */
+.volume-icon {
+    font-size: 25px !important;
+    color: aliceblue;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Thanh trượt âm lượng */
+#volume-slider {
+    width: 80px;
+    height: 5px;
+    border-radius: 10px;
+    background: coral;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.2s ease;
+    display: none;
+    position: absolute;
+    left: 40px;
+    z-index: 20;
+}
+
+.volume-control:hover #volume-slider {
+    display: block;
+}
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: coral;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+#volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: coral;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Khung lời hát */
+.lyrics-container {
+    margin-top: 20px;
+    order: 1;
+    width: 600px;
+    height: 450px;
+    overflow-y: auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 40px 90px rgba(255, 147, 51, 0.5);
+    border-radius: 20px;
+    color: aliceblue;
+    display: none;
+}
+
+.lyrics-container.active {
+    display: block;
+}
+
+/* Căn giữa và viết hoa tên bài hát và nghệ sĩ */
+.song-name, .artist {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+/* Style cho tên bài hát */
+.song-name {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Style cho tên nghệ sĩ */
+.artist {
+    font-size: 15px;
+}
+
+/* Style cho lời bài hát */
+.lyric-line {
+    font-size: 25px;
+    line-height: 1.5;
+}
+
+.lyric-line.active {
+    color: red;
+    font-weight: bold;
+}
+
+/* Các style còn lại */
+.box-disk {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: relative;
+    display: block;
+    margin: 40px auto;
+    background-size: 199% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 5px rgba(255, 147, 51, 0.5);
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.box-disk-play {
+    animation-play-state: running;
+}
+
+.box-disk::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: none;
+}
+
+.music-slider {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.seek-bar {
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    background: #ccc;
+    -webkit-appearance: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 10px;
+    background: forestgreen;
+    box-shadow: -400px 0 0 400px royalblue;
+}
+
+.current-time, .music-time {
+    font-size: 12px;
+}
+
+.music-time {
+    position: absolute;
+    float: left;
+    right: 0;
+}
+
+.controls {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.btn-play {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: coral;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-play span {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 30px;
+    border-radius: 2px;
+    background: beige;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: .5s;
+}
+
+.btn-play span:nth-child(2) {
+    left: 55%;
+    transform-origin: center;
+}
+
+.btn-play.pause span:nth-child(2) {
+    transform: translateY(-50%) scaleY(0);
+}
+
+.btn-play.pause span:nth-child(1) {
+    width: 35%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    border-radius: 0;
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.btn-play.pause {
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0; }
+    50% { box-shadow: 0 0 0 5px rgba(16,53,123,0.1); }
+    100% { box-shadow: 0 0 0 5px rgba(16,53,123,0.8); }
+}
+
+.player-btn {
+    width: 40px;
+    height: 40px;
+    background: salmon;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-lyrics {
+    width: 80px;
+    height: 40px;
+    background: coral;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+/* Style cho nút thích */
+.btn-like {
+    width: 80px;
+    height: 40px;
+    background: coral;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.btn-like:hover {
+    transform: scale(1.1);
+}
+
+.btn-like:active {
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .player-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        padding-top: 70px;
+    }
+    .music-container {
+        width: 100%;
+        height: auto;
+    }
+    .lyrics-container {
+        width: 800px;
+        height: 500px;
+    }
+}
+
+.footer {
+    background-color: none;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000
+}

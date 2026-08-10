@@ -1,0 +1,109 @@
+/* -------------------- */
+/* Navbar chung         */
+/* -------------------- */
+.navbar-gradient {
+    background-color: #2196f338 !important;
+    border: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.navbar-gradient .nav-link {
+    color: white !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.3em 0.3em;
+    margin-right: 6px;
+}
+.navbar-gradient .nav-link:hover {
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.navbar-toggler {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+.navbar-toggler:hover {
+    background-color: #81ffdb;
+    transform: scale(1.1);
+}
+
+/* -------------------- */
+/* Thanh tìm kiếm       */
+/* -------------------- */
+.navbar-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 550px;
+    margin-left: 10px;
+}
+.navbar-search-container input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 12px 18px;
+    border: 2px solid #ccc;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    font-size: 18px;
+    outline: none;
+}
+.green-search-btn {
+    padding: 14px 18px;
+    border: 2px solid #2196f338;
+    border-left: none;
+    background-color: #2196f338;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.green-search-btn:hover {
+    background-color: #218838;
+}
+.green-search-btn i {
+    font-size: 22px;
+}
+
+/* -------------------- */
+/* Nút Login & Register */
+/* -------------------- */
+.btn-login {
+    background: #2196f338 !important;
+    color: #fff !important;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    padding: 10px 20px !important;
+    font-size: 1.2rem;
+    border-radius: 8px !important;
+    font-weight: 700;
+    z-index: 999 !important;
+       
+}
+.btn-login:hover {
+    background: rgba(0, 255, 255, 0.573);
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+
+/* -------------------- */
+/* Footer               */
+/* -------------------- */
+.footer {
+    /* SỬA: Footer cố định ở dưới cùng viewport */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f152;
+    padding: 20px 0;
+    text-align: center;
+    z-index: 1000; /* Đảm bảo footer nằm trên các phần tử khác */
+}

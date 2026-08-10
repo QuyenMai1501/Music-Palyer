@@ -1,0 +1,151 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using MusicPlayer.Data;
+using MusicPlayer.Helpers;
+using MusicPlayer.Models;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+
+namespace MusicPlayer.Pages.Admin
+{
+    public class EditSongModel : PageModel
+    {
+        private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _environment;
+
+        public EditSongModel(AppDbContext context, IWebHostEnvironment environment)
+        {
+            _context = context;
+            _environment = environment;
+        }
+
+        [BindProperty]
+        public int Id { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Tên bài hát không được để trống.")]
+        public required string Title { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Tên ca sĩ không được để trống.")]
+        public required string Artist { get; set; }
+
+        // Các file upload tương tự AddSongModel
+        [BindProperty]
+        public IFormFile? UploadImage { get; set; }
+
+        [BindProperty]
+        public IFormFile? UploadLyrics { get; set; }
+
+        public IActionResult OnGet(int id)
+        {
+            var userRole = HttpContext.Session.GetUserRole();
+            if (userRole != "Admin")
+            {
+                return RedirectToPage("/Error");
+            }
+
+            var song = _context.Songs.FirstOrDefault(s => s.Id == id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            Id = song.Id;
+            Title = song.Title;
+            Artist = song.Artist;
+            // Bạn có thể hiển thị thông tin file ảnh, lời nếu muốn
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            var userRole = HttpContext.Session.GetUserRole();
+            if (userRole != "Admin")
+            {
+                return RedirectToPage("/Error");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var song = _context.Songs.FirstOrDefault(s => s.Id == Id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật thông tin cơ bản
+            song.Title = Title;
+            song.Artist = Artist;
+
+            // Nếu người dùng tải lên file ảnh mới
+            if (UploadImage != null && UploadImage.Length > 0)
+            {
+                var imageFolderPath = Path.Combine(_environment.WebRootPath, "images");
+                if (!Directory.Exists(imageFolderPath))
+                {
+                    Directory.CreateDirectory(imageFolderPath);
+                }
+                var imageFileName = Path.GetFileName(UploadImage.FileName).Trim();
+                var imageFilePath = Path.Combine(imageFolderPath, imageFileName);
+                try
+                {
+                    using (var stream = new FileStream(imageFilePath, FileMode.Create))
+                    {
+                        UploadImage.CopyTo(stream);
+                    }
+                    song.ImagePath = $"/images/{imageFileName}";
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Lỗi khi lưu file ảnh: {ex.Message}");
+                    ModelState.AddModelError("", "Không lưu được file ảnh");
+                    return Page();
+                }
+            }
+
+            // Nếu người dùng tải lên file lời bài hát mới
+            if (UploadLyrics != null && UploadLyrics.Length > 0)
+            {
+                var lyricsFolderPath = Path.Combine(_environment.WebRootPath, "lyrics");
+                if (!Directory.Exists(lyricsFolderPath))
+                {
+                    Directory.CreateDirectory(lyricsFolderPath);
+                }
+                var lyricsFileName = Path.GetFileName(UploadLyrics.FileName).Trim();
+                var lyricsFilePath = Path.Combine(lyricsFolderPath, lyricsFileName);
+                try
+                {
+                    using (var stream = new FileStream(lyricsFilePath, FileMode.Create))
+                    {
+                        UploadLyrics.CopyTo(stream);
+                    }
+                    song.LyricsPath = $"/lyrics/{lyricsFileName}";
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Lỗi khi lưu file lời: {ex.Message}");
+                    ModelState.AddModelError("", "Không lưu được file lời bài hát");
+                    return Page();
+                }
+            }
+
+            try
+            {
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Cập nhật bài hát thành công";
+                return RedirectToPage("/Admin/ManageSongs", new { PageIndex = 1 }); // Trả về trang quản lý bài hát với trang đầu tiên
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Lỗi khi lưu vào cơ sở dữ liệu: {ex.Message}");
+                ModelState.AddModelError("", "Lỗi khi cập nhật bài hát vào cơ sở dữ liệu.");
+                return Page();
+            }
+            
+        }
+    }
+}

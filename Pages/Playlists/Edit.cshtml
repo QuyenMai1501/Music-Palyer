@@ -1,0 +1,33 @@
+@page "{id:int}"
+@model MusicPlayer.Pages.Playlists.EditModel
+@{
+    Layout = "_Layout";
+}
+
+<h2 style="color: white;">✏️ Chỉnh sửa tên </h2>
+
+<!-- Hiển thị thông báo lỗi nếu có -->
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Playlist.Id" />
+    <div class="mb-3">
+        <label asp-for="Playlist.Name" class="form-label" style="color: white;">Tên danh sách phát </label>
+        <input asp-for="Playlist.Name" class="form-control" />
+        <span asp-validation-for="Playlist.Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <a asp-page="/Playlists/Index" class="btn btn-secondary">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

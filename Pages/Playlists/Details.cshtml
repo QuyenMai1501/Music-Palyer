@@ -1,0 +1,147 @@
+@page "{id:int}"
+@model MusicPlayer.Pages.Playlists.DetailsModel
+@{
+    Layout = "_Layout";
+}
+<style>
+    /* Tăng khả năng hiển thị của biểu tượng ba chấm ngang */
+    .action-button i.bi-three-dots {
+        font-size: 1.2rem !important; /* Giảm kích thước biểu tượng */
+        color: #dc3545 !important;
+        transition: color 0.2s; /* Chỉ giữ hiệu ứng chuyển màu */
+    }
+    .action-button i.bi-three-dots:hover {
+        color: #a71d2a !important;
+    }
+    .action-button {
+        display: inline-block !important;
+        position: relative;
+        z-index: 1000 !important;
+        line-height: 1;
+    }
+    /* Xóa viền xanh khi click */
+    .action-button:focus, .action-button i.bi-three-dots:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .dropdown-menu {
+        z-index: 1001 !important;
+        min-width: 150px;
+        display: none;
+    }
+    .dropdown-menu.show {
+        display: block !important;
+    }
+    .table td {
+        vertical-align: middle;
+    }
+    /* Tăng kích thước checkbox để dễ thao tác */
+    .delete-checkbox {
+        transform: scale(1.5); /* Phóng to checkbox */
+        margin-left: 15px; /* Tăng khoảng cách bên trái */
+        width: 20px; /* Đặt chiều rộng */
+        height: 20px; /* Đặt chiều cao */
+    }
+</style>
+<h2 style="color: white;">Playlist: @Model.Playlist.Name</h2>
+
+<!-- Hiển thị thông báo thành công hoặc lỗi -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (Model.Playlist.PlaylistSongs.Any())
+{
+    <div class="d-flex align-items-center mb-3">
+        <!-- Nút phát playlist -->
+        <a asp-page="/Playlists/MusicPlayer" asp-route-playlistId="@Model.Playlist.Id" class="btn btn-primary me-2">▶️ Phát Playlist</a>
+        <!-- Biểu tượng ba chấm ngang với dropdown để chọn xóa -->
+        <div class="dropdown">
+            <button class="btn btn-link action-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" title="Hành động">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                    <button type="button" class="dropdown-item" onclick="toggleDeleteMode()">Xóa bài hát</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form để xóa các bài hát đã chọn -->
+    <form method="post" asp-page-handler="DeleteSelectedSongs" id="deleteForm">
+        <input type="hidden" name="playlistId" value="@Model.Playlist.Id" />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên bài hát</th>
+                    <th>Nghệ sĩ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var playlistSong in Model.PlaylistSongsPaged)
+                {
+                    <tr>
+                        <td>@playlistSong.Song.Title</td>
+                        <td>
+                            @playlistSong.Song.Artist
+                            <!-- Checkbox để chọn bài hát, ẩn mặc định -->
+                            <input type="checkbox" name="songIds" value="@playlistSong.Song.Id" class="delete-checkbox" style="display: none;" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!-- Nút xóa các bài đã chọn và nút hủy, ẩn mặc định -->
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger" id="deleteSelectedButton" style="display: none;" onclick="return confirm('Bạn có chắc muốn xóa các bài hát đã chọn khỏi playlist?');">Xóa các bài đã chọn</button>
+            <button type="button" class="btn btn-secondary" id="cancelDeleteButton" style="display: none;" onclick="toggleDeleteMode()">Hủy</button>
+        </div>
+    </form>
+}
+else
+{
+    <p style="color: #fff;">🚫 Danh sách phát nhạc này chưa có bài hát nào.</p>
+}
+
+@if (Model.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination justify-content-center">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?id=@Model.Playlist.Id&page=@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+<a asp-page="/Playlists/AddSong" asp-route-playlistId="@Model.Playlist.Id" class="btn btn-success">➕ Thêm bài hát</a>
+<script>
+    function toggleDeleteMode() {
+        const checkboxes = document.querySelectorAll('.delete-checkbox');
+        const deleteButton = document.getElementById('deleteSelectedButton');
+        const cancelButton = document.getElementById('cancelDeleteButton');
+        const isVisible = checkboxes[0].style.display === 'inline-block';
+
+        // Bật/tắt checkbox, nút xóa và nút hủy
+        checkboxes.forEach(checkbox => {
+            checkbox.style.display = isVisible ? 'none' : 'inline-block';
+        });
+        deleteButton.style.display = isVisible ? 'none' : 'inline-block';
+        cancelButton.style.display = isVisible ? 'none' : 'inline-block';
+    }
+</script>

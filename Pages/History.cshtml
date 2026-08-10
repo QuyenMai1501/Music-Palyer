@@ -1,0 +1,53 @@
+@page
+@model MusicPlayer.Pages.HistoryModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Lịch sử phản hồi";
+}
+
+<div class="response-wrapper">
+    <div class="response-container">
+        @if (Model.UserMessages != null && Model.UserMessages.Any())
+        {
+            @foreach (var message in Model.UserMessages)
+            {
+                <div class="card mt-4 mb-4">
+                    <div class="card-header">@message.CreatedAt.ToString("dd/MM/yyyy HH:mm")</div>
+                    <div class="card-body">
+                        <p><strong>Nội dung:</strong> @message.Content</p>
+                        @if (!string.IsNullOrEmpty(message.AdminReply))
+                        {
+                            <p class="text-success"><strong>Admin:</strong> @message.AdminReply (@message.AdminReplyAt?.ToString("dd/MM/yyyy HH:mm"))</p>
+                        }
+                        else
+                        {
+                            <p class="text-danger"><em>Chưa có phản hồi từ Admin.</em></p>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: white">Bạn chưa có phản hồi nào.</p>
+        }
+    </div>
+</div>
+
+<style>
+    .response-wrapper {
+        margin-top: 50px; /* Đẩy vùng phản hồi xuống */
+        display: flex;
+        justify-content: center;
+    }
+
+    .response-container {
+        width: 100%;
+        max-height: 500px; /* Giới hạn chiều cao */
+        overflow-y: auto; /* Tạo thanh cuộn nếu nội dung quá dài */
+        padding-right: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.5); /* Hiệu ứng nền nhẹ */
+    }
+</style>

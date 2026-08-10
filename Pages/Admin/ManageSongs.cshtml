@@ -1,0 +1,81 @@
+@page
+@model MusicPlayer.Pages.Admin.ManageSongsModel
+@{
+    ViewData["Title"] = "Quản Lí Bài Hát";
+}
+
+<h1 style="color: white;">Quản Lí Bài Hát</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<!-- Nút Thêm bài hát cố định -->
+<div style="margin-bottom:15px;">
+    <a asp-page="/Admin/AddSong" class="btn btn-primary">Thêm bài hát</a>
+</div>
+
+<!-- Bảng liệt kê danh sách bài hát -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Ca sĩ</th>
+            <th>Ảnh</th>
+            <th>Lời bài hát</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model.Songs)
+        {
+            <tr>
+                <td>@song.Title</td>
+                <td>@song.Artist</td>
+                <td>
+                    <img src="@song.ImagePath" alt="@song.Title" style="width:50px" />
+                </td>
+                <td>
+                    @(song.LyricsPath != null ? "Có" : "Không")
+                </td>
+                <td>
+                    @(song.IsHidden ? "Ẩn" : "Hiện")
+                </td>
+                <td>
+                    <!-- Nút chuyển sang trang sửa bài hát -->
+                    <a asp-page="/Admin/EditSong" asp-route-id="@song.Id" class="btn btn-secondary">Sửa</a>
+
+                    <!-- Form ẩn/hiện bài hát -->
+                    @if (song.IsHidden)
+                    {
+                        <form method="post" asp-page-handler="Unhide" asp-route-id="@song.Id" style="display:inline">
+                            <button type="submit" class="btn btn-success">Hiện</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post" asp-page-handler="Hide" asp-route-id="@song.Id" style="display:inline">
+                            <button type="submit" class="btn btn-danger">Ẩn</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center mt-4">
+    @if(Model.PageIndex > 1)
+    {
+        <a href="?PageIndex=@(Model.PageIndex - 1)" class="btn btn-primary">Trước</a>
+    }
+    @if(Model.PageIndex < Model.TotalPages)
+    {
+        <a href="?PageIndex=@(Model.PageIndex + 1)" class="btn btn-primary">Sau</a>
+    }
+    <p class="mt-2" style="color: #fff;">Trang @Model.PageIndex/ @Model.TotalPages</p>
+</div>

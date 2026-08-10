@@ -1,0 +1,68 @@
+@page
+@model MusicPlayer.Pages.Playlists.IndexModel
+@{
+    Layout = "_Layout";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successMessage" class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+
+    <script>
+        setTimeout(function () {
+            document.getElementById("successMessage").style.display = "none";
+        }, 3000);
+    </script>
+}
+<style>
+    table {
+        background: black;
+    }
+</style>
+<h2 style="color: white;">🎵 Danh sách phát nhạc của bạn</h2>
+
+@if (Model.Playlists.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên danh sách phát</th>
+                <th>Số bài hát</th>
+                <th>Đổi tên</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var playlist in Model.Playlists)  
+            {
+                <tr>
+                    <td>
+                        <a asp-page="/Playlists/Details" asp-route-id="@playlist.Id" class="btn btn-link">@playlist.Name</a>
+                    </td>
+                    <td>@playlist.PlaylistSongs.Count bài hát</td>
+                    <td>
+                        <a asp-page="/Playlists/Edit" asp-route-id="@playlist.Id" class="btn btn-warning"><i class="bi bi-three-dots"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>🚫 Bạn chưa có Playlist nào.</p>
+}
+
+<nav>
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" href="?page=@i">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+
+<a asp-page="/Playlists/Create" class="btn btn-success">➕ Danh sách mới</a>

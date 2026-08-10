@@ -1,0 +1,57 @@
+@page
+@model MusicPlayer.Pages.Account.RegisterModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="/css/register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form method="post" asp-antiforgery="true">
+            <!-- Nút quay lại trang chính -->
+            <a asp-page="/Index" class="back-arrow">
+                <i class="bx bx-arrow-back"></i>
+            </a>
+            <h1>Đăng ký</h1>
+            <!-- Input cho tên người dùng -->
+            <div class="input-box">
+                <input asp-for="Username" type="text" placeholder="Tên người dùng">
+                <i class='bx bxs-user'></i>
+                <!-- Hiển thị lỗi từ ModelState hoặc client-side -->
+                <span class="error-message" asp-validation-for="Username" style="font-weight: 700;"></span>
+            </div>
+            <!-- Input cho email -->
+            <div class="input-box">
+                <input asp-for="Email" type="email" placeholder="Email">
+                <i class='bx bxs-envelope'></i>
+                <span class="error-message" asp-validation-for="Email" style="font-weight: 700;"></span>
+            </div>
+            <!-- Input cho mật khẩu -->
+            <div class="input-box">
+                <input asp-for="Password" type="password" placeholder="Mật khẩu">
+                <i class='bx bx-hide toggle-password'></i>
+                <span class="error-message" asp-validation-for="Password" style="font-weight: 700;"></span>
+            </div>
+            <!-- Nút đăng ký -->
+            <button type="submit" class="btn">Đăng ký</button>
+            <div class="register-link">
+                <p>Đã có tài khoản? <a href="/Account/Login">Đăng nhập</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Thêm thư viện jQuery và validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/register.js"></script>
+</body>
+</html>
