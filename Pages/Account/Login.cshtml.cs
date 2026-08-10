@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicPlayer.Data;
 using MusicPlayer.Helpers;
+using MusicPlayer.Services;
 
 namespace MusicPlayer.Pages.Account
 {
-    public class LoginModel(AppDbContext db) : PageModel
+    public class LoginModel(AppDbContext db, PasswordService passwordService) : PageModel
     {
         private readonly AppDbContext _db = db;
 
@@ -29,19 +28,39 @@ namespace MusicPlayer.Pages.Account
                 return Page();
             }
 
+            if (HttpContext.Session.IsLoginLocked())
+            {
+                ModelState.AddModelError("", "Quá nhiều lần đăng nhập sai. Vui lòng thử lại sau 15 phút.");
+                return Page();
+            }
+
             // Kiểm tra thông tin đăng nhập
             var user = _db.Users.FirstOrDefault(u => u.Username == Username);
             if (user == null)
             {
+                HttpContext.Session.RecordLoginFailure();
                 ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng.");
                 return Page();
             }
 
-            if (user.PasswordHash != HashPassword(Password))
+            var passwordCheck = passwordService.CheckPassword(Password, user.PasswordHash);
+            if (passwordCheck == PasswordCheckResult.Failed)
             {
+                HttpContext.Session.RecordLoginFailure();
                 ModelState.AddModelError("Password", "Mật khẩu không đúng.");
                 return Page();
             }
+
+            // Mật khẩu hợp lệ: xóa bộ đếm thử sai
+            HttpContext.Session.ClearLoginFailures();
+
+            // Nâng cấp hash cũ (SHA-256) lên PBKDF2
+            if (passwordCheck == PasswordCheckResult.SuccessRehash)
+            {
+                user.PasswordHash = passwordService.HashPassword(Password);
+                _db.SaveChanges();
+            }
+
             if (user.IsLocked)
             {
                 ModelState.AddModelError("", "Tài khoản của bạn đã bị khóa.");
@@ -58,15 +77,6 @@ namespace MusicPlayer.Pages.Account
             // Chuyển hướng đến trang chính
             TempData["SuccessMessage"] = "🎉 Đăng nhập thành công. Chào mừng trở lại!";
             return RedirectToPage("/Index");
-        }
-
-        private string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            return BitConverter
-                .ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)))
-                .Replace("-", "")
-                .ToLower();
         }
     }
 }

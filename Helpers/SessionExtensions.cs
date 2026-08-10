@@ -1,6 +1,13 @@
 namespace MusicPlayer.Helpers
 {
+    using System.Globalization;
+
     public static class SessionExtensions{
+        private const string LoginFailCountKey = "LoginFailCount";
+        private const string LoginFailStartKey = "LoginFailStart";
+        public const int MaxLoginFails = 5;
+        public static readonly TimeSpan LoginLockWindow = TimeSpan.FromMinutes(15);
+
         public static int? GetUserId(this ISession session)
         {
             return session.GetInt32("UserId");
@@ -27,6 +34,48 @@ namespace MusicPlayer.Helpers
             session.Remove("UserRole");
             session.Remove("Useremail");
             session.Remove("Username");
+        }
+
+        public static bool IsLoginLocked(this ISession session)
+        {
+            int? failCount = session.GetInt32(LoginFailCountKey);
+            DateTime? failStart = session.GetDateTime(LoginFailStartKey);
+            if (failCount == null || failStart == null)
+            {
+                return false;
+            }
+            if (DateTime.UtcNow - failStart > LoginLockWindow)
+            {
+                session.ClearLoginFailures();
+                return false;
+            }
+            return failCount >= MaxLoginFails;
+        }
+
+        public static void RecordLoginFailure(this ISession session)
+        {
+            if (session.GetDateTime(LoginFailStartKey) == null)
+            {
+                session.SetDateTime(LoginFailStartKey, DateTime.UtcNow);
+            }
+            session.SetInt32(LoginFailCountKey, (session.GetInt32(LoginFailCountKey) ?? 0) + 1);
+        }
+
+        public static void ClearLoginFailures(this ISession session)
+        {
+            session.Remove(LoginFailCountKey);
+            session.Remove(LoginFailStartKey);
+        }
+
+        private static DateTime? GetDateTime(this ISession session, string key)
+        {
+            string? value = session.GetString(key);
+            return string.IsNullOrEmpty(value) ? null : DateTime.Parse(value, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind);
+        }
+
+        private static void SetDateTime(this ISession session, string key, DateTime value)
+        {
+            session.SetString(key, value.ToString("O", CultureInfo.InvariantCulture));
         }
     }
 }

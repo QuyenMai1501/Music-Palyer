@@ -12,7 +12,6 @@ using MusicPlayer.Helpers;
 
 namespace MusicPlayer.Pages.Music
 {
-    [IgnoreAntiforgeryToken]
     public class PlayerModel(AppDbContext context, IWebHostEnvironment environment) : PageModel
     {
         private readonly AppDbContext _context = context;

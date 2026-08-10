@@ -71,6 +71,17 @@ namespace MusicPlayer.Pages.Admin
                 return Page();
             }
 
+            if (!IsAllowedImage(UploadImage))
+            {
+                ModelState.AddModelError("UploadImage", "Chỉ chấp nhận file ảnh định dạng .jpg, .jpeg, .png, .webp, .gif (tối đa 5MB).");
+                return Page();
+            }
+            if (!IsAllowedLyrics(UploadLyrics))
+            {
+                ModelState.AddModelError("UploadLyrics", "Chỉ chấp nhận file lời định dạng .lrc, .txt (tối đa 1MB).");
+                return Page();
+            }
+
             var song = _context.Songs.FirstOrDefault(s => s.Id == Id);
             if (song == null)
             {
@@ -115,7 +126,7 @@ namespace MusicPlayer.Pages.Admin
                 {
                     Directory.CreateDirectory(lyricsFolderPath);
                 }
-                var lyricsFileName = Path.GetFileName(UploadLyrics.FileName).Trim();
+                var lyricsFileName = $"{Guid.NewGuid()}_{Path.GetFileName(UploadLyrics.FileName).Trim()}";
                 var lyricsFilePath = Path.Combine(lyricsFolderPath, lyricsFileName);
                 try
                 {
@@ -146,6 +157,25 @@ namespace MusicPlayer.Pages.Admin
                 return Page();
             }
             
+        }
+
+        private static bool IsAllowedImage(IFormFile? file)
+        {
+            if (file == null || file.Length == 0) return true;
+            if (file.Length > 5L * 1024 * 1024) return false;
+            string ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            bool validExt = ext is ".jpg" or ".jpeg" or ".png" or ".webp" or ".gif";
+            bool validContentType = file.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase)
+                || file.ContentType.Equals("application/octet-stream", StringComparison.OrdinalIgnoreCase);
+            return validExt && validContentType;
+        }
+
+        private static bool IsAllowedLyrics(IFormFile? file)
+        {
+            if (file == null || file.Length == 0) return true;
+            if (file.Length > 1L * 1024 * 1024) return false;
+            string ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return ext is ".lrc" or ".txt";
         }
     }
 }

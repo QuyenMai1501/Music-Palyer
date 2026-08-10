@@ -5,22 +5,23 @@ ASP.NET Core 8.0 Razor Pages app (Vietnamese UI) + one MVC API controller. EF Co
 ## Run / verify
 
 - `dotnet run` (profile `http` -> http://localhost:5122); `dotnet build` to verify.
-- Requires local MySQL: create database `sql_music` first (host/port/creds hardcoded in `appsettings.json`: `root` / `Quyen_1501`).
+- Requires local MySQL: create database `sql_music` first. The connection string is NOT committed — it is read from user-secrets (Development) or env var `ConnectionStrings__MySQLConnection`. To set locally: `dotnet user-secrets set "ConnectionStrings:MySQLConnection" "server=localhost;port=3306;database=sql_music;user=root;password=<pass>"`.
 - Migrations are NOT auto-applied at startup. After schema changes: `dotnet ef migrations add <Name>` then `dotnet ef database update`.
 - Note: installed `dotnet-ef` global tool is v9.0.4 vs EF packages 8.0.3; commands still work.
 
 ## Auth (important - NOT ASP.NET Identity)
 
-- Login/Register use a custom SHA-256 hex hash (`Pages/Account/Login.cshtml.cs:63`). Don't change the hashing without updating both pages.
+- Passwords are hashed with PBKDF2 via `Services/PasswordService.cs` (wraps ASP.NET `PasswordHasher<User>`). Legacy SHA-256 hex hashes are detected and rehashed automatically on next successful login. Use `PasswordService` (not inline crypto) for all hashing.
+- Login is rate-limited via session: 5 failed attempts locks the session for 15 minutes (`Helpers/SessionExtensions.cs`: `IsLoginLocked`, `RecordLoginFailure`, `ClearLoginFailures`).
 - Authenticated state lives in `ISession` (`UserId`, `UserRole`, `Username`, `Useremail`) via `Helpers/SessionExtensions.cs`. The `AddAuthentication(Cookie...)` registration in `Program.cs` is effectively unused.
 - Every handler guards admin pages with `HttpContext.Session.GetUserRole() == "Admin"`. Redirect target varies: `/Error`, `/Account/Login`, or `/Index` depending on page.
-- No seed data: register always creates `Role="User"`. The first Admin must be inserted directly into the `Users` table (`Role='Admin'`, password = SHA-256 hex) or created by an existing admin via `/Admin/ManageUser`.
+- No seed data: register always creates `Role="User"`. To create the first Admin: register a normal user, then promote directly in MySQL (`UPDATE Users SET Role='Admin' WHERE Username='...'`) or via `/Admin/ManageUser` once an Admin exists. Do not hand-insert `PasswordHash` (must be a PBKDF2 string, not SHA-256 hex).
 
 ## Media storage & URLs
 
 - `Program.cs:54-66` maps: `wwwroot/music/*`->`/music/*` (ServeUnknownFileTypes, `audio/mpeg`), `wwwroot/lyrics/*`->`/lyrics/*`. `wwwroot/images/*` is the default static folder.
 - `Song.FilePath`/`LyricsPath`/`ImagePath` store URL paths starting with `/music/`, `/lyrics/`, `/images/`.
-- Admin uploads (`Pages/Admin/AddSong.cshtml.cs`): song + image keep original filenames (spaces/Vietnamese diacritics OK), but lyrics files are always saved with a `Guid_` prefix to avoid collisions.
+- Admin uploads (`Pages/Admin/AddSong.cshtml.cs`, `Pages/Admin/EditSong.cshtml.cs`): song + image keep original filenames (spaces/Vietnamese diacritics OK), but lyrics files are always saved with a `Guid_` prefix to avoid collisions. Extensions are validated server-side: audio `.mp3`, image `.jpg/.jpeg/.png/.webp/.gif`, lyrics `.lrc/.txt`, with size caps (100MB / 5MB / 1MB).
 - Player page `OnGetPlay` serves the audio file from disk and records a `Play` row (drives weekly trending via `Services/MusicService.cs`).
 
 ## Conventions

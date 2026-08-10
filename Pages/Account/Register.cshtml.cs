@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicPlayer.Data;
 using MusicPlayer.Models;
+using MusicPlayer.Services;
 
 namespace MusicPlayer.Pages.Account
 {
-    public class RegisterModel(AppDbContext db) : PageModel
+    public class RegisterModel(AppDbContext db, PasswordService passwordService) : PageModel
     {
         private readonly AppDbContext _db = db;
 
@@ -47,7 +46,7 @@ namespace MusicPlayer.Pages.Account
             {
                 Username = Username,
                 Email = Email,
-                PasswordHash = HashPassword(Password),
+                PasswordHash = passwordService.HashPassword(Password),
                 Role = "User",
                 CreateDate = DateTime.Now
             };
@@ -57,16 +56,6 @@ namespace MusicPlayer.Pages.Account
             // Chuyển hướng đến trang đăng nhập sau khi đăng ký thành công
             TempData["SuccessMessage"] = "Đăng ký thành công. Vui lòng đăng nhập";
             return RedirectToPage("/Account/Login");
-        }
-
-        // Hàm mã hóa mật khẩu bằng SHA256
-        private string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            return BitConverter
-                .ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)))
-                .Replace("-", "")
-                .ToLower();
         }
     }
 }

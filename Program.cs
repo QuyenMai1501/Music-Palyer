@@ -29,6 +29,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<MusicService>();
+builder.Services.AddScoped<PasswordService>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
