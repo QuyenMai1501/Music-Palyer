@@ -2,20 +2,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicPlayer.Data;
 using MusicPlayer.Models;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
 using TagLib;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using MusicPlayer.Helpers;
+using MusicPlayer.Services;
 
 namespace MusicPlayer.Pages.Music
 {
-    public class PlayerModel(AppDbContext context, IWebHostEnvironment environment) : PageModel
+    public class PlayerModel(AppDbContext context, MediaStorage mediaStorage) : PageModel
     {
         private readonly AppDbContext _context = context;
-        private readonly IWebHostEnvironment _environment = environment;
+        private readonly MediaStorage _mediaStorage = mediaStorage;
 
         public Song? Song { get; set; }
         public string SongDuration { get; set; } = "00:00";
@@ -46,8 +45,8 @@ namespace MusicPlayer.Pages.Music
                     normalizedImagePath = $"/images/{Path.GetFileName(Song.ImagePath)}";
                 }
 
-                var imagePath = Path.Combine(_environment.WebRootPath, normalizedImagePath.TrimStart('/', '\\'));
-                if (!System.IO.File.Exists(imagePath))
+                var imagePath = _mediaStorage.GetPhysicalPath(normalizedImagePath);
+                if (string.IsNullOrEmpty(imagePath) || !System.IO.File.Exists(imagePath))
                 {
                     Song.ImagePath = "/images/default.jpg";
                 }
@@ -59,10 +58,9 @@ namespace MusicPlayer.Pages.Music
 
             if (!string.IsNullOrEmpty(Song.LyricsPath))
             {
-                var lrcFilePath = Path.Combine(_environment.WebRootPath, Song.LyricsPath.TrimStart('/', '\\'));
-                if (System.IO.File.Exists(lrcFilePath))
+                if (_mediaStorage.Exists(Song.LyricsPath))
                 {
-                    LrcContent = System.IO.File.ReadAllText(lrcFilePath);
+                    LrcContent = _mediaStorage.ReadAllText(Song.LyricsPath);
                 }
                 else
                 {
@@ -107,8 +105,8 @@ namespace MusicPlayer.Pages.Music
             Response.Headers["Pragma"] = "no-cache";
             Response.Headers["Expires"] = "0";
 
-            var filePath = Path.Combine(_environment.WebRootPath, song.FilePath.TrimStart('/', '\\'));
-            if (!System.IO.File.Exists(filePath))
+            var filePath = _mediaStorage.GetPhysicalPath(song.FilePath);
+            if (string.IsNullOrEmpty(filePath) || !System.IO.File.Exists(filePath))
             {
                 return NotFound();
             }
@@ -162,8 +160,8 @@ namespace MusicPlayer.Pages.Music
                 return $"{song.Duration.Minutes:D2}:{song.Duration.Seconds:D2}";
             }
 
-            var filePath = Path.Combine(_environment.WebRootPath, song.FilePath.TrimStart('/', '\\'));
-            if (!System.IO.File.Exists(filePath))
+            var filePath = _mediaStorage.GetPhysicalPath(song.FilePath);
+            if (string.IsNullOrEmpty(filePath) || !System.IO.File.Exists(filePath))
             {
                 return "00:00";
             }

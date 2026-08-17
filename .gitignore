@@ -35,3 +35,6 @@ publish/
 
 ## EF Core
 *.db
+
+## Uploaded media (ngoài wwwroot)
+media/

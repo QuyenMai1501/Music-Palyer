@@ -5,16 +5,17 @@ using MusicPlayer.Data;
 using MusicPlayer.Helpers;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MusicPlayer.Models;
+using MusicPlayer.Services;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
 using TagLib;
 
 namespace MusicPlayer.Pages.Admin
 {
-    public class AddSongModel(AppDbContext context, IWebHostEnvironment environment) : PageModel
+    public class AddSongModel(AppDbContext context, MediaStorage mediaStorage) : PageModel
     {
         private readonly AppDbContext _context = context;
-        private readonly IWebHostEnvironment _environment = environment;
+        private readonly MediaStorage _mediaStorage = mediaStorage;
 
         [BindProperty]
         [Required(ErrorMessage = "Tên bài hát không được để trống.")]
@@ -82,19 +83,12 @@ namespace MusicPlayer.Pages.Admin
 
             if (UploadFile != null && UploadFile.Length > 0)
             {
-                var folderPath = Path.Combine(_environment.WebRootPath, "music");
-                if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
-
                 fileName = Path.GetFileName(UploadFile.FileName).Trim();
-                var filePath = Path.Combine(folderPath, fileName);
 
                 try
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        UploadFile.CopyTo(stream);
-                    }
-                    duration = GetMp3Duration(filePath);
+                    _mediaStorage.SaveFile("music", UploadFile, fileName);
+                    duration = GetMp3Duration(_mediaStorage.GetPhysicalPath($"/music/{fileName}"));
                 }
                 catch (Exception ex)
                 {
@@ -106,17 +100,10 @@ namespace MusicPlayer.Pages.Admin
 
             if (UploadImage != null && UploadImage.Length > 0)
             {
-                var imageFolderPath = Path.Combine(_environment.WebRootPath, "images");
-                if (!Directory.Exists(imageFolderPath)) Directory.CreateDirectory(imageFolderPath);
-
                 imageFileName = Path.GetFileName(UploadImage.FileName).Trim();
-                var imageFilePath = Path.Combine(imageFolderPath, imageFileName);
                 try
                 {
-                    using (var stream = new FileStream(imageFilePath, FileMode.Create))
-                    {
-                        UploadImage.CopyTo(stream);
-                    }
+                    _mediaStorage.SaveFile("images", UploadImage, imageFileName);
                 }
                 catch (Exception ex)
                 {
@@ -128,19 +115,12 @@ namespace MusicPlayer.Pages.Admin
 
             if (UploadLyrics != null && UploadLyrics.Length > 0)
             {
-                var lyricsFolderPath = Path.Combine(_environment.WebRootPath, "lyrics");
-                if (!Directory.Exists(lyricsFolderPath)) Directory.CreateDirectory(lyricsFolderPath);
-
                 // SỬA: Tạo tên file lời duy nhất
                 lyricsFileName = $"{Guid.NewGuid()}_{Path.GetFileName(UploadLyrics.FileName).Trim()}";
-                var lyricsFilePath = Path.Combine(lyricsFolderPath, lyricsFileName);
                 try
                 {
-                    using (var stream = new FileStream(lyricsFilePath, FileMode.Create))
-                    {
-                        UploadLyrics.CopyTo(stream);
-                    }
-                    Console.WriteLine($"Lưu file lời: {lyricsFilePath}"); // SỬA: Thêm log
+                    _mediaStorage.SaveFile("lyrics", UploadLyrics, lyricsFileName);
+                    Console.WriteLine($"Lưu file lời: {_mediaStorage.GetPhysicalPath($"/lyrics/{lyricsFileName}")}"); // SỬA: Thêm log
                 }
                 catch (Exception ex)
                 {

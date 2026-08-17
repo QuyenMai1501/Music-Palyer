@@ -35,7 +35,7 @@ Trang web nghe nhạc trực tuyến xây dựng bằng ASP.NET Core 8.0 (Razor 
 - `Services/MusicService.cs` - tính xếp hạng thịnh hành tuần
 - `Helpers/SessionExtensions.cs` - tiện ích đọc / ghi Session
 - `Migrations/` - migrations EF Core
-- `wwwroot/` - CSS/JS và file media (music, lyrics, images)
+- `wwwroot/` - CSS/JS và ảnh mặc định (media tải lên nằm ở thư mục `media/` ngoài wwwroot)
 
 ## Hướng dẫn cài đặt
 
@@ -73,6 +73,9 @@ Hoặc sau khi đã có một Admin, dùng trang `/Admin/ManageUser` để nâng
 
 ## Lưu ý về file media
 
+- Toàn bộ media (nhạc, ảnh, lời) được lưu trong thư mục gốc cấu hình được **ngoài `wwwroot`** (mặc định `<ContentRoot>/media`) để không bị mất khi deploy lại. Cấu hình qua `Media:RootPath` (appsettings / user-secrets / biến môi trường `Media__RootPath`); để trống sẽ dùng mặc định `media/`.
 - File nhạc và ảnh giữ nguyên tên gốc khi upload; file lời bài hát (.lrc) được đặt tên có tiền tố `Guid_` để tránh trùng lặp.
 - Định dạng được kiểm tra phía server: nhạc `.mp3` (tối đa 100MB), ảnh `.jpg/.jpeg/.png/.webp/.gif` (tối đa 5MB), lời `.lrc/.txt` (tối đa 1MB).
-- Đường dẫn file được lưu trong database dưới dạng URL ảo: `/music/...`, `/lyrics/...`, `/images/...`.
+- Đường dẫn file được lưu trong database dưới dạng URL ảo: `/music/...`, `/lyrics/...`, `/images/...` (giữ nguyên so với trước, không cần migration).
+- Ảnh mặc định của trang (`/images/default.png`, logo, ...) vẫn nằm trong `wwwroot/images`; chỉ file upload mới nằm trong media root.
+- Thư mục `media/` được thêm vào `.gitignore` — không commit file media lên git.

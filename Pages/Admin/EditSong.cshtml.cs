@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicPlayer.Data;
 using MusicPlayer.Helpers;
 using MusicPlayer.Models;
+using MusicPlayer.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
@@ -11,12 +12,12 @@ namespace MusicPlayer.Pages.Admin
     public class EditSongModel : PageModel
     {
         private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _environment;
+        private readonly MediaStorage _mediaStorage;
 
-        public EditSongModel(AppDbContext context, IWebHostEnvironment environment)
+        public EditSongModel(AppDbContext context, MediaStorage mediaStorage)
         {
             _context = context;
-            _environment = environment;
+            _mediaStorage = mediaStorage;
         }
 
         [BindProperty]
@@ -95,19 +96,10 @@ namespace MusicPlayer.Pages.Admin
             // Nếu người dùng tải lên file ảnh mới
             if (UploadImage != null && UploadImage.Length > 0)
             {
-                var imageFolderPath = Path.Combine(_environment.WebRootPath, "images");
-                if (!Directory.Exists(imageFolderPath))
-                {
-                    Directory.CreateDirectory(imageFolderPath);
-                }
                 var imageFileName = Path.GetFileName(UploadImage.FileName).Trim();
-                var imageFilePath = Path.Combine(imageFolderPath, imageFileName);
                 try
                 {
-                    using (var stream = new FileStream(imageFilePath, FileMode.Create))
-                    {
-                        UploadImage.CopyTo(stream);
-                    }
+                    _mediaStorage.SaveFile("images", UploadImage, imageFileName);
                     song.ImagePath = $"/images/{imageFileName}";
                 }
                 catch (Exception ex)
@@ -121,19 +113,10 @@ namespace MusicPlayer.Pages.Admin
             // Nếu người dùng tải lên file lời bài hát mới
             if (UploadLyrics != null && UploadLyrics.Length > 0)
             {
-                var lyricsFolderPath = Path.Combine(_environment.WebRootPath, "lyrics");
-                if (!Directory.Exists(lyricsFolderPath))
-                {
-                    Directory.CreateDirectory(lyricsFolderPath);
-                }
                 var lyricsFileName = $"{Guid.NewGuid()}_{Path.GetFileName(UploadLyrics.FileName).Trim()}";
-                var lyricsFilePath = Path.Combine(lyricsFolderPath, lyricsFileName);
                 try
                 {
-                    using (var stream = new FileStream(lyricsFilePath, FileMode.Create))
-                    {
-                        UploadLyrics.CopyTo(stream);
-                    }
+                    _mediaStorage.SaveFile("lyrics", UploadLyrics, lyricsFileName);
                     song.LyricsPath = $"/lyrics/{lyricsFileName}";
                 }
                 catch (Exception ex)
