@@ -5,224 +5,468 @@
 }
 
 body,
-.playlist-container,
-.playlist-container td {
+.player-frame,
+.player-frame td {
     font-family: 'Roboto', 'Noto Sans', Arial, sans-serif !important;
     unicode-bidi: embed;
 }
 
-body {
-    width: 100%;
-    min-height: 100vh;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    background: url('/images/background/anh10.jpg') no-repeat center center / cover;
-    padding-top: 0;
-}
-
-.music-container {
+.player-page {
+    min-height: calc(100vh - 56px);
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    margin-top: 80px;
-    max-width: 1200px;
+    padding: 28px 16px;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255, 147, 51, 0.16), transparent 42%),
+        radial-gradient(circle at 85% 85%, rgba(120, 60, 220, 0.18), transparent 45%),
+        linear-gradient(160deg, #10101c 0%, #181828 55%, #15203b 100%);
+}
+
+.player-frame {
     width: 100%;
-    padding: 20px;
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    grid-template-areas:
+        "hero list"
+        "viz  viz";
+    gap: 24px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 26px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    padding: 26px 28px;
+    color: #eef2ff;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
-.playlist-container {
+/* ---------- Cột trái: hero player ---------- */
+.player-hero {
+    grid-area: hero;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-back {
+    align-self: flex-start;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.btn-back:hover {
+    background: rgba(255, 147, 51, 0.35);
+}
+
+.player-disk-wrap {
+    position: relative;
+    margin: 18px auto 8px;
+}
+
+.player-disk {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 6px solid rgba(255, 147, 51, 0.45);
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.06),
+        0 18px 50px rgba(255, 147, 51, 0.35),
+        inset 0 0 0 14px rgba(0, 0, 0, 0.28);
+    animation: spin 16s linear infinite;
+    animation-play-state: paused;
+}
+
+.player-disk.playing {
+    animation-play-state: running;
+}
+
+.player-disk::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #3a3a4e 0%, #22222f 60%, #10101a 100%);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.now-playing {
     width: 100%;
-    max-width: 700px; /* SỬA: Tăng max-width lên 700px */
-    background: #00000047;
-    border-radius: 20px;
-    box-shadow: 0 40px 90px rgba(255, 147, 51, 0.5);
-    padding: 30px;
-    color: aliceblue;
-    /* overflow-y: auto;
-    max-height: 550px; */
-    margin: auto;
+    text-align: center;
+    margin-top: 8px;
 }
 
-.playlist-container table {
-    width: 100%;
-    border-collapse: collapse;
-    background: transparent;
+.now-playing .np-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.playlist-container th,
-.playlist-container td {
-    padding: 10px;
-    text-align: left;
-    text-transform: capitalize;
-    background: transparent;
-}
-
-.playlist-container th {
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.playlist-container td {
+.now-playing .np-artist {
+    display: block;
     font-size: 14px;
+    color: rgba(238, 242, 255, 0.65);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
 }
 
-.playlist-container tr {
+.player-times {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: rgba(238, 242, 255, 0.6);
+}
+
+.seek-bar {
+    width: 100%;
+    height: 6px;
+    margin-top: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    outline: none;
     cursor: pointer;
-    background: transparent;
 }
 
-.playlist-container tr:hover {
-    background: rgba(255, 147, 51, 0.2);
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ff9333;
+    box-shadow: 0 0 8px rgba(255, 147, 51, 0.8);
 }
 
-.playlist-container .active-song {
-    background: rgba(255, 147, 51, 0.3);
-    font-weight: bold;
+.seek-bar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: none;
+    border-radius: 50%;
+    background: #ff9333;
+    box-shadow: 0 0 8px rgba(255, 147, 51, 0.8);
 }
 
-.playlist-header {
-    display: flex;
-    flex-direction: column; /* SỬA: Column để header-controls ở trên header-main */
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.header-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* SỬA: Giữ h3 và controls cùng hàng */
-    width: 100%;
-}
-
-.playlist-header h3 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: flex-start; /* SỬA: Căn trái để mũi tên trước, volume sau */
-    width: 100%;
-    margin-bottom: 10px; /* SỬA: Khoảng cách với header-main */
+.seek-bar::-moz-range-progress {
+    background: #ff9333;
+    height: 6px;
+    border-radius: 6px;
 }
 
 .controls {
     display: flex;
-    flex-direction: row;
-    gap: 20px; /* SỬA: Tăng gap từ 15px lên 20px để cách xa hơn */
     align-items: center;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .control-btn {
-    background: rgba(255, 147, 51, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    color: white;
-    font-size: 20px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s;
+    background: linear-gradient(135deg, rgba(255, 147, 51, 0.85), rgba(255, 110, 85, 0.85));
+    box-shadow: 0 6px 16px rgba(255, 147, 51, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .control-btn:hover {
-    background: rgba(255, 147, 51, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(255, 147, 51, 0.5);
+}
+
+.control-btn:active {
+    transform: scale(0.94);
+}
+
+#playPauseBtn {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+    background: linear-gradient(135deg, #ff9333, #ff5e62);
+    box-shadow: 0 8px 24px rgba(255, 99, 71, 0.45);
+}
+
+#playPauseBtn:hover {
+    box-shadow: 0 12px 30px rgba(255, 99, 71, 0.6);
 }
 
 .volume-control {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    margin-top: 14px;
     position: relative;
 }
 
 .volume-control .volume-icon {
-    color: white;
+    color: rgba(238, 242, 255, 0.85);
     font-size: 20px;
     cursor: pointer;
 }
 
 .volume-control input[type="range"] {
-    width: 80px;
+    width: 100px;
     height: 5px;
-    background: coral;
     border-radius: 5px;
+    background: #ff9333;
     outline: none;
     -webkit-appearance: none;
-    display: none; /* SỬA: Ẩn thanh âm lượng */
+    display: none;
 }
 
 .volume-control:hover input[type="range"] {
-    display: block; /* SỬA: Hiển thị khi hover */
+    display: block;
 }
 
 .volume-control input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
+    width: 14px;
+    height: 14px;
+    background: #fff;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .volume-control input[type="range"]::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    background: white;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: none;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.playlist-header .dropdown .btn-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 0;
-    background: rgba(255, 147, 51, 0.8);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+/* ---------- Cột phải: danh sách bài hát ---------- */
+.player-list {
+    grid-area: list;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    min-width: 0;
 }
 
-.playlist-header .dropdown .btn-link:hover {
-    background: rgba(255, 147, 51, 1.0);
+.list-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
 }
 
-.playlist-header .dropdown .dropdown-menu {
-    background: rgba(255, 147, 51, 0.6);
-    border: none;
-    z-index: 9999;
+.list-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.playlist-header .dropdown .dropdown-item {
-    color: #fff;
-}
-
-.playlist-header .dropdown .dropdown-item:hover {
-    background: rgba(255, 147, 51, 0.8);
-}
-
-.visualizer {
-    width: 100%;
-    height: 100px;
-    display: block;
-    margin-top: 20px;
+.list-count {
+    font-size: 13px;
+    color: rgba(238, 242, 255, 0.6);
+    flex-shrink: 0;
 }
 
 .playlist-scroll {
-    max-height: 220px; /* hoặc bất kỳ chiều cao nào bạn muốn cố định */
+    flex: 1;
+    max-height: 420px;
     overflow-y: auto;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.12);
 }
 
-.table, .table th, .table td {
-    color: white;
+.playlist-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.playlist-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 147, 51, 0.45);
+    border-radius: 8px;
+}
+
+.song-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.song-table th,
+.song-table td {
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.song-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: rgba(238, 242, 255, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.song-table td {
+    font-size: 14px;
+    color: #eef2ff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.song-table tbody tr {
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.song-table tbody tr:hover {
+    background: rgba(255, 147, 51, 0.15);
+}
+
+.song-table tbody tr.active-song {
+    background: linear-gradient(90deg, rgba(255, 147, 51, 0.3), rgba(255, 147, 51, 0.06));
+}
+
+.song-table .col-index {
+    width: 36px;
+    text-align: center;
+}
+
+.song-table .col-time {
+    width: 74px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.song-thumb {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.song-name-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.song-index {
+    color: rgba(238, 242, 255, 0.45);
+    font-size: 13px;
+}
+
+tr.active-song td {
+    font-weight: 600;
+    color: #ffd9b0;
+}
+
+tr.active-song .song-index span {
+    display: none;
+}
+
+tr.active-song .song-index::after {
+    content: '♪';
+    display: inline-block;
+    color: #ffb066;
+    animation: playing-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes playing-pulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ---------- Visualizer ---------- */
+.visualizer {
+    grid-area: viz;
+    width: 100%;
+    height: 100px;
+    display: block;
+    margin-top: 4px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .player-frame {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "hero"
+            "list"
+            "viz";
+        padding: 20px 16px;
+    }
+
+    .playlist-scroll {
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 576px) {
+    .player-page {
+        padding: 14px 10px;
+    }
+
+    .player-disk {
+        width: 210px;
+        height: 210px;
+    }
+
+    #playPauseBtn {
+        width: 56px;
+        height: 56px;
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
 }
