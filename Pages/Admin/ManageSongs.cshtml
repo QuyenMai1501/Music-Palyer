@@ -48,6 +48,7 @@
                 <td>
                     <!-- Nút chuyển sang trang sửa bài hát -->
                     <a asp-page="/Admin/EditSong" asp-route-id="@song.Id" class="btn btn-secondary">Sửa</a>
+                    <a asp-page="/Admin/EditLyrics" asp-route-id="@song.Id" class="btn btn-info">Sửa lời</a>
 
                     <!-- Form ẩn/hiện bài hát -->
                     @if (song.IsHidden)

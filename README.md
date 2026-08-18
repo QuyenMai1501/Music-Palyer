@@ -23,6 +23,7 @@ Trang web nghe nhạc trực tuyến xây dựng bằng ASP.NET Core 8.0 (Razor 
 
 ### Admin
 - Quản lý bài hát: thêm, sửa, ẩn / hiện, xóa
+- **Soạn lời bài hát ngay trên web** (`/Admin/EditLyrics/{id}`): phát nhạc, gắn thời gian từng câu (phím T), chỉnh offset, xem trước đồng bộ — không cần công cụ bên thứ ba như Lyrics Maker
 - Quản lý người dùng: khóa / mở khóa tài khoản, nâng quyền Admin
 - Trả lời phản hồi của người dùng
 
@@ -74,7 +75,7 @@ Hoặc sau khi đã có một Admin, dùng trang `/Admin/ManageUser` để nâng
 ## Lưu ý về file media
 
 - Toàn bộ media (nhạc, ảnh, lời) được lưu trong thư mục gốc cấu hình được **ngoài `wwwroot`** (mặc định `<ContentRoot>/media`) để không bị mất khi deploy lại. Cấu hình qua `Media:RootPath` (appsettings / user-secrets / biến môi trường `Media__RootPath`); để trống sẽ dùng mặc định `media/`.
-- File nhạc và ảnh giữ nguyên tên gốc khi upload; file lời bài hát (.lrc) được đặt tên có tiền tố `Guid_` để tránh trùng lặp.
+- File nhạc và ảnh giữ nguyên tên gốc khi upload; file lời bài hát (.lrc) được đặt tên có tiền tố `Guid_` để tránh trùng lặp. Khi soạn lời bằng trang `/Admin/EditLyrics`, nếu bài đã có lời thì ghi đè đúng file cũ (không sinh file rác); lời rỗng sẽ xóa luôn file lời.
 - Định dạng được kiểm tra phía server: nhạc `.mp3` (tối đa 100MB), ảnh `.jpg/.jpeg/.png/.webp/.gif` (tối đa 5MB), lời `.lrc/.txt` (tối đa 1MB).
 - Đường dẫn file được lưu trong database dưới dạng URL ảo: `/music/...`, `/lyrics/...`, `/images/...` (giữ nguyên so với trước, không cần migration).
 - Ảnh mặc định của trang (`/images/default.png`, logo, ...) vẫn nằm trong `wwwroot/images`; chỉ file upload mới nằm trong media root.

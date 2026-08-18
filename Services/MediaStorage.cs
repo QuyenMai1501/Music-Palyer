@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -82,6 +83,17 @@ namespace MusicPlayer.Services
         {
             string path = GetPhysicalPath(virtualPath);
             return string.IsNullOrEmpty(path) ? string.Empty : File.ReadAllText(path);
+        }
+
+        // Lưu nội dung văn bản (UTF-8 không BOM) vào thư mục con, ghi đè nếu đã tồn tại,
+        // trả về virtual path /<subdir>/<fileName>.
+        public string SaveText(string subdir, string fileName, string content)
+        {
+            string folder = Path.Combine(_rootPath, subdir);
+            Directory.CreateDirectory(folder);
+            string fullPath = Path.Combine(folder, fileName);
+            File.WriteAllText(fullPath, content, new UTF8Encoding(false));
+            return $"/{subdir}/{fileName}";
         }
     }
 }
