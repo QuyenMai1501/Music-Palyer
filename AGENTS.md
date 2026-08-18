@@ -24,6 +24,7 @@ ASP.NET Core 8.0 Razor Pages app (Vietnamese UI) + one MVC API controller. EF Co
 - `Song.FilePath`/`LyricsPath`/`ImagePath` store URL paths starting with `/music/`, `/lyrics/`, `/images/`. This virtual-path format is unchanged, so no DB migration was needed when files moved out of `wwwroot`.
 - Admin uploads (`Pages/Admin/AddSong.cshtml.cs`, `Pages/Admin/EditSong.cshtml.cs`): song + image keep original filenames (spaces/Vietnamese diacritics OK), but lyrics files are always saved with a `Guid_` prefix to avoid collisions. Extensions are validated server-side: audio `.mp3`, image `.jpg/.jpeg/.png/.webp/.gif`, lyrics `.lrc/.txt`, with size caps (100MB / 5MB / 1MB). Files are saved to the media root via `MediaStorage.SaveFile("music|images|lyrics", ...)`.
 - Player page `OnGetPlay` streams the audio from the media root (range requests) and records a `Play` row (drives weekly trending via `Services/MusicService.cs`).
+- Lyrics are authored in-app at `/Admin/EditLyrics/{id}` (`Pages/Admin/EditLyrics*`, JS in `wwwroot/js/lyrics-editor.js`), replacing external tools like Lyrics Maker. It streams audio via its own `OnGetAudio` handler which deliberately does NOT record a `Play` row (so editing doesn't inflate trending). Saving rebuilds the LRC text and calls `MediaStorage.SaveText("lyrics", ...)` — overwrites the existing file, or creates a new `Guid_`-prefixed one; an empty save deletes the lyrics. `Song.LyricsPath` is kept as a virtual `/lyrics/...` path.
 
 ## Conventions
 

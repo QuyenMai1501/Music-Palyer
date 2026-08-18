@@ -1,0 +1,105 @@
+@page "{id:int}"
+@model MusicPlayer.Pages.Admin.EditLyricsModel
+@{
+    ViewData["Title"] = "Soạn Lời Bài Hát";
+}
+
+@section Head {
+    <link rel="stylesheet" href="/css/lyrics-editor.css" asp-append-version="true">
+}
+
+<h1 class="editor-title">🎤 Soạn Lời Bài Hát</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center mb-3">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewData.ModelState[string.Empty]?.Errors.FirstOrDefault()?.ErrorMessage))
+{
+    <div class="alert alert-danger text-center mb-3">
+        @ViewData.ModelState[string.Empty].Errors.FirstOrDefault().ErrorMessage
+    </div>
+}
+
+<div class="editor-wrapper">
+    <div class="editor-card">
+        <div class="editor-song">
+            <h2 class="editor-song-name">@Model.Song.Title</h2>
+            <p class="editor-artist">@Model.Song.Artist</p>
+        </div>
+
+        <!-- Điều khiển phát -->
+        <div class="editor-player">
+            <button type="button" id="playToggle" class="editor-play-btn" title="Phát / Tạm dừng">
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <div class="editor-times">
+                <span id="currentTime">00:00</span>
+                <span>/</span>
+                <span id="duration">00:00</span>
+            </div>
+            <input type="range" id="seekBar" value="0" step="0.01" min="0" max="100" class="editor-seek" />
+        </div>
+
+        <!-- Điều chỉnh offset -->
+        <div class="editor-offset">
+            <label class="editor-label" for="offsetInput">Chỉnh offset (giây, âm = sớm hơn):</label>
+            <div class="editor-offset-row">
+                <input type="number" id="offsetInput" value="0" step="0.05" class="form-control editor-offset-input" />
+                <button type="button" id="applyOffset" class="btn btn-warning btn-sm">Áp dụng</button>
+                <button type="button" id="resetOffset" class="btn btn-secondary btn-sm">Đặt lại</button>
+            </div>
+        </div>
+
+        <!-- Soạn lời -->
+        <div class="editor-lines">
+            <div class="editor-text-col">
+                <label class="editor-label" for="lyricsText">Lời bài hát (mỗi dòng một câu):</label>
+                <textarea id="lyricsText" class="form-control editor-textarea" spellcheck="false"
+                          placeholder="Nhập lời bài hát, mỗi dòng một câu..."></textarea>
+                <div class="editor-hint">
+                    Cách gắn thời gian: bấm phát bài hát, chọn 1 dòng ở bảng dưới, nhấn nút
+                    <strong>Gắn thời gian</strong> (hoặc phím <kbd>T</kbd>, dùng <kbd>Ctrl+T</kbd> khi đang gõ lời)
+                    đúng lúc dòng đó bắt đầu hát. Nhấp đúp vào một dòng để nhảy audio tới đúng thời điểm.
+                </div>
+            </div>
+            <div class="editor-preview-col">
+                <label class="editor-label">Danh sách đã gắn thời gian:</label>
+                <ol id="previewList" class="editor-preview"></ol>
+            </div>
+        </div>
+
+        <div class="editor-toolbar">
+            <button type="button" id="stampButton" class="btn btn-success">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> Gắn thời gian
+            </button>
+            <button type="button" id="clearTimes" class="btn btn-outline-light">Xoá hết thời gian</button>
+        </div>
+
+        <!-- Form lưu -->
+        <form method="post" asp-page-handler="Save" asp-route-id="@Model.Song.Id" id="saveForm">
+            <input type="hidden" asp-for="LinesJson" id="linesJson" />
+            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
+                <i class="fa fa-save" aria-hidden="true"></i> Lưu lời bài hát
+            </button>
+            <div class="editor-hint text-center">
+                Bỏ trống toàn bộ lời rồi Lưu để <strong>xoá lời</strong> của bài hát này.
+            </div>
+        </form>
+    </div>
+</div>
+
+<audio id="editorAudio" preload="metadata">
+    <source src="/Admin/EditLyrics/@Model.Song.Id?handler=Audio" type="audio/mpeg" />
+</audio>
+
+@section Scripts {
+    <script>
+        var existingLrc = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.LyricsText));
+        var editorAudioUrl = '/Admin/EditLyrics/@Model.Song.Id?handler=Audio';
+    </script>
+    <script src="~/js/lyrics-editor.js" asp-append-version="true"></script>
+}

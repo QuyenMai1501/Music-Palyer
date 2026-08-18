@@ -213,24 +213,33 @@
     lrcContent = lrcContent.replace(/\\n/g, "\n");
 
     function parseLRC(text) {
-        const lines = text.split(/\r|\n/);
-        const pattern = /\[(\d{2}):(\d{2}(?:\.\d{1,3})?)\](.*)/;
+        const lines = text.split(/\r?\n/);
 
         const result = [];
         lines.forEach(line => {
             line = line.trim();
             if (!line) return;
-            const match = line.match(pattern);
-            if (match) {
-                const minutes = parseInt(match[1], 10);
-                const seconds = parseFloat(match[2]);
-                const time = minutes * 60 + seconds;
-                const content = match[3].trim();
-                result.push({ time: time, content: content });
-            } else {
-                console.warn("Không khớp regex:", line);
+            if (/^\[(ti|ar|al|by|re|ve|length|offset):/i.test(line)) return;
+
+            const timePattern = /\[(?:(\d{1,2}):)?(\d{1,2}):(\d{2}(?:\.\d{1,3})?)\]/g;
+            const timestamps = [];
+            let match;
+            while ((match = timePattern.exec(line)) !== null) {
+                const hours = match[1] ? parseInt(match[1], 10) : 0;
+                const minutes = parseInt(match[2], 10);
+                const seconds = parseFloat(match[3]);
+                timestamps.push(hours * 3600 + minutes * 60 + seconds);
             }
+            if (timestamps.length === 0) return;
+
+            const content = line.replace(timePattern, '').trim();
+            if (!content) return;
+
+            timestamps.forEach(time => {
+                result.push({ time: time, content: content });
+            });
         });
+        result.sort((a, b) => a.time - b.time);
         return result;
     }
 
