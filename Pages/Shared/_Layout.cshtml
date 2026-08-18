@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MusicPlayer.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    @await RenderSectionAsync("Head", required: false)
     <style>
         /* SỬA: Cấu hình body và main để hỗ trợ fixed footer */
         html, body {

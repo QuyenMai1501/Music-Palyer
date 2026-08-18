@@ -26,11 +26,33 @@ namespace MusicPlayer.Services
             var today = DateTime.UtcNow.Date;
             var startOfWeek = today.AddDays(-(int)today.DayOfWeek);
 
+            var playCounts = _context.Plays
+                .Where(p => p.PlayDate.Date >= startOfWeek && p.PlayDate.Date <= today)
+                .GroupBy(p => p.SongId)
+                .Select(g => new { SongId = g.Key, Count = g.Count() })
+                .ToList();
+
+            var likeCounts = _context.Likes
+                .Where(l => l.LikeDate.Date >= startOfWeek && l.LikeDate.Date <= today)
+                .GroupBy(l => l.SongId)
+                .Select(g => new { SongId = g.Key, Count = g.Count() })
+                .ToList();
+
+            var scores = new Dictionary<int, int>();
+            foreach (var item in playCounts)
+            {
+                scores[item.SongId] = scores.GetValueOrDefault(item.SongId) + item.Count;
+            }
+            foreach (var item in likeCounts)
+            {
+                scores[item.SongId] = scores.GetValueOrDefault(item.SongId) + item.Count;
+            }
+
             return _context.Songs
-                .Where(song => !song.IsHidden && _context.Plays.Count(p => p.SongId == song.Id && p.PlayDate.Date >= startOfWeek && p.PlayDate.Date <= today) +
-                            _context.Likes.Count(l => l.SongId == song.Id && l.LikeDate.Date >= startOfWeek && l.LikeDate.Date <= today) > 0)
-                .OrderByDescending(song => _context.Plays.Count(p => p.SongId == song.Id && p.PlayDate.Date >= startOfWeek && p.PlayDate.Date <= today) +
-                                        _context.Likes.Count(l => l.SongId == song.Id && l.LikeDate.Date == today))
+                .Where(s => !s.IsHidden)
+                .ToList()
+                .Where(s => scores.ContainsKey(s.Id))
+                .OrderByDescending(s => scores.GetValueOrDefault(s.Id))
                 .Take(10) // Hiển thị 10 bài hát phổ biến nhất trong tuần
                 .ToList();
         }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using MusicPlayer.Data;
 using MusicPlayer.Services;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +25,13 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<MusicService>();
+builder.Services.AddScoped<PasswordService>();
+builder.Services.AddSingleton<MediaStorage>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
@@ -45,6 +48,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+// Thư mục gốc lưu media (nhạc, ảnh, lời) — nằm ngoài wwwroot để không mất khi deploy lại.
+string mediaRoot = MediaStorage.ResolveRootPath(app.Configuration, app.Environment);
+MediaStorage.EnsureDirectories(mediaRoot);
+
 app.UseRouting();
 
 
@@ -53,7 +60,7 @@ app.UseSession();
 app.UseAuthorization();
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/music")),
+    FileProvider = new PhysicalFileProvider(Path.Combine(mediaRoot, "music")),
     RequestPath = "/music",
     ServeUnknownFileTypes = true, // Cho phép phát file không có MIME rõ ràng
     DefaultContentType = "audio/mpeg" // Đặt kiểu file mặc định là MP3
@@ -61,8 +68,16 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/lyrics")),
+    FileProvider = new PhysicalFileProvider(Path.Combine(mediaRoot, "lyrics")),
     RequestPath = "/lyrics"
+});
+
+// Ảnh upload nằm trong media root; ảnh mặc định trong wwwroot/images vẫn được ưu tiên hơn
+// (middleware UseStaticFiles mặc định ở trên chạy trước và phục vụ wwwroot/images nếu có file).
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(mediaRoot, "images")),
+    RequestPath = "/images"
 });
 
 app.MapControllers();

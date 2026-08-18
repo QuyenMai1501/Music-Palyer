@@ -4,13 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using MusicPlayer.Data;
 using MusicPlayer.Helpers;
 using MusicPlayer.Models;
+using MusicPlayer.Services;
 using TagLib;
 
 namespace MusicPlayer.Pages.Playlists
 {
-    public class MusicPlayerModel(AppDbContext context) : PageModel
+    public class MusicPlayerModel(AppDbContext context, MediaStorage mediaStorage) : PageModel
     {
         private readonly AppDbContext _context = context;
+        private readonly MediaStorage _mediaStorage = mediaStorage;
 
         public Playlist? Playlist { get; set; }
         public Song? CurrentSong { get; set; }
@@ -58,8 +60,8 @@ namespace MusicPlayer.Pages.Playlists
             {
                 try
                 {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", playlistSong.Song.FilePath.TrimStart('/'));
-                    if (System.IO.File.Exists(filePath))
+                    var filePath = _mediaStorage.GetPhysicalPath(playlistSong.Song.FilePath);
+                    if (!string.IsNullOrEmpty(filePath) && System.IO.File.Exists(filePath))
                     {
                         using (var file = TagLib.File.Create(filePath))
                         {

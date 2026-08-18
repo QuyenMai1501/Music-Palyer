@@ -1,0 +1,40 @@
+## .NET build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Tt]est[Rr]esult/
+[Tt]est[Rr]esults/
+
+## User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vs/
+
+## VS Code
+.vscode/
+
+## Rider
+.idea/
+
+## OS
+Thumbs.db
+.DS_Store
+
+## NuGet
+*.nupkg
+*.snupkg
+
+## Publish output
+publish/
+
+## EF Core
+*.db
+
+## Uploaded media (ngoài wwwroot)
+media/

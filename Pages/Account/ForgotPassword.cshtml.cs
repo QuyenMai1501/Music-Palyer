@@ -34,7 +34,7 @@ namespace MusicPlayer.Pages.Account
             string token = WebEncoders.Base64UrlEncode(tokenData);
 
             user.ResetToken = token;
-            user.ResetTokenExpiry = DateTime.Now.AddHours(1);
+            user.ResetTokenExpiry = DateTime.UtcNow.AddHours(1);
             _context.SaveChanges();
 
             string resetLink = Url.Page("/Account/ResetPassword", null, new { token }, Request.Scheme);

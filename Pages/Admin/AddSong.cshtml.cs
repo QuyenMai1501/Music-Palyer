@@ -5,15 +5,17 @@ using MusicPlayer.Data;
 using MusicPlayer.Helpers;
 using Microsoft.AspNetCore.Http.HttpResults;
 using MusicPlayer.Models;
+using MusicPlayer.Services;
 using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
+using TagLib;
 
 namespace MusicPlayer.Pages.Admin
 {
-    public class AddSongModel(AppDbContext context, IWebHostEnvironment environment) : PageModel
+    public class AddSongModel(AppDbContext context, MediaStorage mediaStorage) : PageModel
     {
         private readonly AppDbContext _context = context;
-        private readonly IWebHostEnvironment _environment = environment;
+        private readonly MediaStorage _mediaStorage = mediaStorage;
 
         [BindProperty]
         [Required(ErrorMessage = "Tên bài hát không được để trống.")]
@@ -57,24 +59,36 @@ namespace MusicPlayer.Pages.Admin
                 return Page();
             }
 
+            // Kiểm tra định dạng và kích thước file trước khi lưu
+            if (!IsAllowedAudio(UploadFile))
+            {
+                ModelState.AddModelError("UploadFile", "Chỉ chấp nhận file nhạc định dạng .mp3 (tối đa 100MB).");
+                return Page();
+            }
+            if (!IsAllowedImage(UploadImage))
+            {
+                ModelState.AddModelError("UploadImage", "Chỉ chấp nhận file ảnh định dạng .jpg, .jpeg, .png, .webp, .gif (tối đa 5MB).");
+                return Page();
+            }
+            if (!IsAllowedLyrics(UploadLyrics))
+            {
+                ModelState.AddModelError("UploadLyrics", "Chỉ chấp nhận file lời định dạng .lrc, .txt (tối đa 1MB).");
+                return Page();
+            }
+
             string? fileName = null;
             string? imageFileName = null;
             string? lyricsFileName = null;
+            TimeSpan duration = TimeSpan.Zero;
 
             if (UploadFile != null && UploadFile.Length > 0)
             {
-                var folderPath = Path.Combine(_environment.WebRootPath, "music");
-                if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
-
                 fileName = Path.GetFileName(UploadFile.FileName).Trim();
-                var filePath = Path.Combine(folderPath, fileName);
 
                 try
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        UploadFile.CopyTo(stream);
-                    }
+                    _mediaStorage.SaveFile("music", UploadFile, fileName);
+                    duration = GetMp3Duration(_mediaStorage.GetPhysicalPath($"/music/{fileName}"));
                 }
                 catch (Exception ex)
                 {
@@ -86,17 +100,10 @@ namespace MusicPlayer.Pages.Admin
 
             if (UploadImage != null && UploadImage.Length > 0)
             {
-                var imageFolderPath = Path.Combine(_environment.WebRootPath, "images");
-                if (!Directory.Exists(imageFolderPath)) Directory.CreateDirectory(imageFolderPath);
-
                 imageFileName = Path.GetFileName(UploadImage.FileName).Trim();
-                var imageFilePath = Path.Combine(imageFolderPath, imageFileName);
                 try
                 {
-                    using (var stream = new FileStream(imageFilePath, FileMode.Create))
-                    {
-                        UploadImage.CopyTo(stream);
-                    }
+                    _mediaStorage.SaveFile("images", UploadImage, imageFileName);
                 }
                 catch (Exception ex)
                 {
@@ -108,19 +115,12 @@ namespace MusicPlayer.Pages.Admin
 
             if (UploadLyrics != null && UploadLyrics.Length > 0)
             {
-                var lyricsFolderPath = Path.Combine(_environment.WebRootPath, "lyrics");
-                if (!Directory.Exists(lyricsFolderPath)) Directory.CreateDirectory(lyricsFolderPath);
-
                 // SỬA: Tạo tên file lời duy nhất
                 lyricsFileName = $"{Guid.NewGuid()}_{Path.GetFileName(UploadLyrics.FileName).Trim()}";
-                var lyricsFilePath = Path.Combine(lyricsFolderPath, lyricsFileName);
                 try
                 {
-                    using (var stream = new FileStream(lyricsFilePath, FileMode.Create))
-                    {
-                        UploadLyrics.CopyTo(stream);
-                    }
-                    Console.WriteLine($"Lưu file lời: {lyricsFilePath}"); // SỬA: Thêm log
+                    _mediaStorage.SaveFile("lyrics", UploadLyrics, lyricsFileName);
+                    Console.WriteLine($"Lưu file lời: {_mediaStorage.GetPhysicalPath($"/lyrics/{lyricsFileName}")}"); // SỬA: Thêm log
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +138,8 @@ namespace MusicPlayer.Pages.Admin
                 FilePath = fileName != null ? $"/music/{fileName}" : "/music/default.mp3",
                 ImagePath = imageFileName != null ? $"/images/{imageFileName}" : "/images/default.png",
                 LyricsPath = lyricsFileName != null ? $"/lyrics/{lyricsFileName}" : null,
-                CreateDate = DateTime.Now
+                Duration = duration,
+                CreateDate = DateTime.UtcNow
             };
         
 
@@ -158,6 +159,49 @@ namespace MusicPlayer.Pages.Admin
             }
             
         }
-        
+
+        private static TimeSpan GetMp3Duration(string filePath)
+        {
+            try
+            {
+                using (var file = TagLib.File.Create(filePath))
+                {
+                    return file.Properties.Duration;
+                }
+            }
+            catch
+            {
+                return TimeSpan.Zero;
+            }
+        }
+
+        private static bool IsAllowedAudio(IFormFile? file)
+        {
+            if (file == null || file.Length == 0) return true;
+            if (file.Length > 100L * 1024 * 1024) return false;
+            string ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            bool validContentType = file.ContentType.StartsWith("audio/", StringComparison.OrdinalIgnoreCase)
+                || file.ContentType.Equals("application/octet-stream", StringComparison.OrdinalIgnoreCase);
+            return ext == ".mp3" && validContentType;
+        }
+
+        private static bool IsAllowedImage(IFormFile? file)
+        {
+            if (file == null || file.Length == 0) return true;
+            if (file.Length > 5L * 1024 * 1024) return false;
+            string ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            bool validExt = ext is ".jpg" or ".jpeg" or ".png" or ".webp" or ".gif";
+            bool validContentType = file.ContentType.StartsWith("image/", StringComparison.OrdinalIgnoreCase)
+                || file.ContentType.Equals("application/octet-stream", StringComparison.OrdinalIgnoreCase);
+            return validExt && validContentType;
+        }
+
+        private static bool IsAllowedLyrics(IFormFile? file)
+        {
+            if (file == null || file.Length == 0) return true;
+            if (file.Length > 1L * 1024 * 1024) return false;
+            string ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            return ext is ".lrc" or ".txt";
+        }
     }
 }

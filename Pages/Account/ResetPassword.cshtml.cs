@@ -1,13 +1,12 @@
 using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MusicPlayer.Data;
+using MusicPlayer.Services;
 
 namespace MusicPlayer.Pages.Account
 {
-    public class ResetPasswordModel(AppDbContext context) : PageModel
+    public class ResetPasswordModel(AppDbContext context, PasswordService passwordService) : PageModel
     {
         private readonly AppDbContext _context = context;
 
@@ -44,14 +43,14 @@ namespace MusicPlayer.Pages.Account
             }
 
             var user = _context.Users.FirstOrDefault(u =>
-                u.ResetToken == Token && u.ResetTokenExpiry != null && u.ResetTokenExpiry > DateTime.Now);
+                u.ResetToken == Token && u.ResetTokenExpiry != null && u.ResetTokenExpiry > DateTime.UtcNow);
             if (user == null)
             {
                 ModelState.AddModelError("", "Token không hợp lệ hoặc đã hết hạn.");
                 return Page();
             }
 
-            user.PasswordHash = HashPassword(Password);
+            user.PasswordHash = passwordService.HashPassword(Password);
 
             user.ResetToken = null;
             user.ResetTokenExpiry = null;
@@ -59,15 +58,6 @@ namespace MusicPlayer.Pages.Account
 
             PasswordResetSuccess = true;
             return Page();
-        }
-
-        private string HashPassword( string password)
-        {
-             using var sha256= SHA256.Create();
-             return BitConverter
-             .ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)))
-             .Replace("-", "")
-             .ToLower();
         }
 
     }
